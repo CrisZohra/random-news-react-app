@@ -16,7 +16,7 @@
 
 ## IMPROVEMENTS:
 
-    [ ] Filter by location / category.
+    [ ] Search bars to look for posts (ie. by title or loation)
     [ ] Order posts by date.
     [ ] Loader / Skeleton.
     [ ] Responsive.
@@ -36,27 +36,38 @@
     - Education.
     - Other.
 
-HOMEPAGE: --> Zohra.
+HOMEPAGE will have: --> Zohra [ ]
 
-- Navbar. --> Cris
-- Create a new post. --> Zohra.
+- Component: Navbar. --> Cris [X]
+- Component: AddPost.jsx --> Zohra [ ]
 
-NAVBAR: --> Cris (work from here).
+NAVBAR will have: --> Cris (work from here) [X]
 
-- Home.
-- Menu.
-- (About us).
+- Home [X]
+- Dropdown menu with the posts' categories pages [X]
+- About us [X]
+- Style [ ]
 
-ALL POSTS: --> Cris.
+ALL POSTS will have: --> Cris. [ ]
 
-- Image (in case there's one) Title, location, date and category.
-- Posts must have the edit / delete button.
+- All posts (without filter). Each post will show:
+  -- Image.
+  -- Title.
+  -- Location.
+  -- Date.
+  -- Category.
+  -- Button: edit.
+  -- Button: delete.
+- Style [ ]
 
-POST DETAILS:
+POST DETAILS will have:
 
-- Just one post with all the info.
-- Also edit and delete button.
+- Just one post with all the properties except the id (image, title, description, location, date, image, url and category).
+- Button: edit.
+- Button: delete.
 
 EACH CATEGORY: --> Zohra.
 
 - GET request post with the category of the page.
+
+\*\* EACH PAGE SHOULD HAVE ON TOP SOME SEARCH BARS TO FILTER BY TITLE OR LOCATION (So that the user can type what he/she is looking for and only the posts with those letter will be displayed)

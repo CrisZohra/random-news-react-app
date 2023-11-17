@@ -1,41 +1,50 @@
-import axios from "axios";
-import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+
 import "./App.css";
+
 import Navbar from "./components/Navbar";
-import { Routes } from "react-router-dom";
+
+import HomePage from "./pages/HomePage";
+import AllPostsPage from "./pages/AllPostsPage";
+import PostDetailsPage from "./pages/PostDetailsPage";
+import WeatherPostsPage from "./pages/WeatherPostsPage";
+import TrafficPostsPage from "./pages/TrafficPostsPage";
+import EducationPostsPage from "./pages/EducationPostsPage";
+import JobsPostsPage from "./pages/JobsPostsPage";
+import SellingPostsPage from "./pages/SellingPostsPage";
+import EntertaimentPostsPage from "./pages/EntertaimentPostsPage";
+import EventsPostsPage from "./pages/EventsPostsPage";
+import SocialPostsPage from "./pages/SocialPostsPage";
+import OtherPostsPage from "./pages/OtherPostsPage";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
-  const [post, setPost] = useState([]);
-  axios
-    .get("https://random-news-react-app.adaptable.app/posts")
-    .then((response) => {
-      setPost(response.data);
-    })
-    .catch((error) => error);
+
   return (
     <>
+      <div className="App">
 
-      <Navbar />
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={ <HomePage /> } />
-        <Route path="/posts" element={ <AllPosts /> } />
-        <Route path="/posts/:postid" element={ <PostDetails /> } />
-        <Route path="/posts/weather" element={ <WeatherPosts /> } />
-        <Route path="/posts/entertaiment" element={ <EntertaimentPosts /> } />
-        <Route path="/posts/traffic" element={ <TrafficPosts /> } />
-        <Route path="/posts/events" element={ <EventsPosts /> } />
-        <Route path="/posts/social" element={ <SocialPosts /> } />
-        <Route path="/posts/jobs" element={ <JobsPosts /> } />
-        <Route path="/posts/education" element={ <EducationPosts /> } />
-        <Route path="/posts/selling" element={ <SellingPosts /> } />
-        <Route path="/posts/other" element={ <OtherPosts /> } />
-      </Routes>
-
-      {post.map((elm) => {
-        return <p key={elm.id}>{elm.title}</p>;
-      })}
+        <Routes>
+          <Route path="/" element={ <HomePage /> } />
+          <Route path="/posts" element={ <AllPostsPage /> } />
+          <Route path="/posts/:postid" element={ <PostDetailsPage /> } />
+          <Route path="/posts/weather" element={ <WeatherPostsPage /> } />
+          <Route path="/posts/traffic" element={ <TrafficPostsPage /> } />
+          <Route path="/posts/education" element={ <EducationPostsPage /> } />
+          <Route path="/posts/jobs" element={ <JobsPostsPage /> } />
+          <Route path="/posts/selling" element={ <SellingPostsPage /> } />
+          <Route path="/posts/entertaiment" element={ <EntertaimentPostsPage /> } />
+          <Route path="/posts/events" element={ <EventsPostsPage /> } />
+          <Route path="/posts/social" element={ <SocialPostsPage /> } />
+          <Route path="/posts/other" element={ <OtherPostsPage /> } />
+          <Route path="/about-us" element={ <AboutUs /> } />
+        </Routes>
+    
+      </div>
     </>
   );
 }
+
 export default App;
