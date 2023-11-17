@@ -1,8 +1,62 @@
-# React + Vite
+## RANDOM NEWS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## MVP:
 
-Currently, two official plugins are available:
+    [X] API
+    [ ] APP / MAIN / HOMEPAGE
+    [ ] READ: HOMEPAGE (Render the different categories pages)
+    [ ] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url)
+    [ ] DELETE: REMOVE AN EXISTING POST
+    [ ] UPDATE: EDIT EXISTING POST
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## CSS
+
+    [ ] General style
+    [ ] Give style to components
+
+## IMPROVEMENTS:
+
+    [ ] Filter by location / category.
+    [ ] Order posts by date.
+    [ ] Loader / Skeleton.
+    [ ] Responsive.
+    [ ] Delete the posts automatically after x days.
+    [ ] Show the X first posts and then 'show more' button.
+
+## CATEGORIES (Pages with each category, )
+
+    - All.
+    - Weather updates.
+    - Selling.
+    - Entertainment.
+    - Events.
+    - Traffic.
+    - Social.
+    - Job offers.
+    - Education.
+    - Other.
+
+HOMEPAGE: --> Zohra.
+
+- Navbar. --> Cris
+- Create a new post. --> Zohra.
+
+NAVBAR: --> Cris (work from here).
+
+- Home.
+- Menu.
+- (About us).
+
+ALL POSTS: --> Cris.
+
+- Image (in case there's one) Title, location, date and category.
+- Posts must have the edit / delete button.
+
+POST DETAILS:
+
+- Just one post with all the info.
+- Also edit and delete button.
+
+EACH CATEGORY: --> Zohra.
+
+- GET request post with the category of the page.
