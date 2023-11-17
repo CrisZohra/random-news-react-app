@@ -1,13 +1,12 @@
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function HomePage() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
   const [date, setDate] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("other");
   const [imageURL, setImageURL] = useState("");
   const [URL, setURL] = useState("");
 
@@ -23,21 +22,25 @@ function HomePage() {
       imageURL,
       URL,
     };
+    console.log(requestBody);
 
     axios
       .post("https://random-news-react-app.adaptable.app/posts", requestBody)
+      .then(() => {
+        console.log("form submitted");
+
+        setTitle("");
+        setDescription("");
+        setLocation("");
+        setDate("");
+        setCategory("");
+        setImageURL("");
+        setURL("");
+      })
       .catch((error) => {
         console.log("Error creating new post...");
         console.log(error);
       });
-
-    setTitle("");
-    setDescription("");
-    setLocation("");
-    setDate("");
-    setCategory("");
-    setImageURL("");
-    setURL("");
   };
 
   return (
@@ -51,6 +54,7 @@ function HomePage() {
           <input
             type="text"
             name="title"
+            placeholder="Enter title"
             required={true}
             value={title}
             onChange={(e) => {
@@ -64,6 +68,7 @@ function HomePage() {
           <textarea
             type="text"
             name="description"
+            placeholder="Write a description"
             required={true}
             value={description}
             onChange={(e) => {
@@ -77,6 +82,7 @@ function HomePage() {
           <input
             type="text"
             name="location"
+            placeholder="Specify the location"
             value={location}
             onChange={(e) => {
               setLocation(e.target.value);
@@ -89,6 +95,7 @@ function HomePage() {
           <input
             type="date"
             name="date"
+            placeholder="Set the date"
             value={date}
             onChange={(e) => {
               setDate(e.target.value);
@@ -101,7 +108,7 @@ function HomePage() {
           <input
             type="text"
             name="imageURL"
-            placeholder="paste image URL"
+            placeholder="Paste image URL"
             value={imageURL}
             onChange={(e) => {
               setImageURL(e.target.value);
@@ -114,7 +121,7 @@ function HomePage() {
           <input
             type="text"
             name="URL"
-            placeholder=""
+            placeholder="Add a URL"
             value={URL}
             onChange={(e) => {
               setURL(e.target.value);
@@ -131,15 +138,15 @@ function HomePage() {
               setCategory(e.target.value);
             }}
           >
-            <option>Weather</option>
-            <option>Selling</option>
-            <option>Entertainment</option>
-            <option>Events</option>
-            <option>Traffic</option>
-            <option>Social</option>
-            <option>Jobs</option>
-            <option>Education</option>
-            <option>Other</option>
+            <option value="weather">Weather</option>
+            <option value="selling">Selling</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="events">Events</option>
+            <option value="traffic">Traffic</option>
+            <option value="social">Social</option>
+            <option value="jobs">Jobs</option>
+            <option value="education">Education</option>
+            <option value="other">Other</option>
           </select>
         </label>
         <br />
