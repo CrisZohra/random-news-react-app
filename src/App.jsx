@@ -15,7 +15,7 @@ function App() {
     <>
       <Navbar />
       {post.map((elm) => {
-        return <p>{elm.title}</p>;
+        return <p key={elm.id}>{elm.title}</p>;
       })}
     </>
   );
