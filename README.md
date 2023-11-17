@@ -36,18 +36,19 @@
     - Education.
     - Other.
 
-HOMEPAGE will have: --> Zohra
+HOMEPAGE will have: --> Zohra [ ]
 
-- Component: Navbar. --> Cris
-- Component: AddPost.jsx --> Zohra
+- Component: Navbar. --> Cris [X]
+- Component: AddPost.jsx --> Zohra [ ]
 
-NAVBAR will have: --> Cris (work from here)
+NAVBAR will have: --> Cris (work from here) [X]
 
-- Home
-- Menu
-- About us
+- Home [X]
+- Dropdown menu with the posts' categories pages [X]
+- About us [X]
+- Style [ ]
 
-ALL POSTS will have: --> Cris.
+ALL POSTS will have: --> Cris. [ ]
 
 - All posts (without filter). Each post will show:
   -- Image.
@@ -57,6 +58,7 @@ ALL POSTS will have: --> Cris.
   -- Category.
   -- Button: edit.
   -- Button: delete.
+- Style [ ]
 
 POST DETAILS will have:
 
