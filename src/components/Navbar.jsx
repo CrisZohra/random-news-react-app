@@ -35,6 +35,7 @@ function Navbar() {
           OTHER
         </NavDropdown.Item>
       </NavDropdown>
+      <NavLink to="/about-us">ABOUT US</NavLink>
     </nav>
   );
 }

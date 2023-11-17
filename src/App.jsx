@@ -16,6 +16,7 @@ import EntertaimentPostsPage from "./pages/EntertaimentPostsPage";
 import EventsPostsPage from "./pages/EventsPostsPage";
 import SocialPostsPage from "./pages/SocialPostsPage";
 import OtherPostsPage from "./pages/OtherPostsPage";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/posts/events" element={ <EventsPostsPage /> } />
           <Route path="/posts/social" element={ <SocialPostsPage /> } />
           <Route path="/posts/other" element={ <OtherPostsPage /> } />
+          <Route path="/about-us" element={ <AboutUs /> } />
         </Routes>
     
       </div>
