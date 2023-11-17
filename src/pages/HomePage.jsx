@@ -21,24 +21,23 @@ function HomePage() {
       date,
       category,
       imageURL,
-      URL
-    }
-    
-      axios.post("https://random-news-react-app.adaptable.app/posts", requestBody)
-        .catch((error) => {
+      URL,
+    };
+
+    axios
+      .post("https://random-news-react-app.adaptable.app/posts", requestBody)
+      .catch((error) => {
         console.log("Error creating new post...");
-        console.log(error);    
-      })
- 
+        console.log(error);
+      });
 
     setTitle("");
-    setDescription("")
-    setLocation("")
-    setDate("")
-    setCategory("")
-    setImageURL("")
-    setURL("")
-
+    setDescription("");
+    setLocation("");
+    setDate("");
+    setCategory("");
+    setImageURL("");
+    setURL("");
   };
 
   return (
@@ -49,75 +48,119 @@ function HomePage() {
       <form onSubmit={handleSubmit}>
         <label className="form">
           Title:
-          <input 
-            type="text" 
-            name="title" 
-            required={true} 
-            value={title} 
-            onChange={(e) => {setTitle(e.target.value) }}
-            />
+          <input
+            type="text"
+            name="title"
+            required={true}
+            value={title}
+            onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+          />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           Description:
           <textarea
             type="text"
             name="description"
             required={true}
             value={description}
-            onChange={(e) => { setDescription(e.target.value) }}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
           />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           Location:
-          <input 
-            type="text" 
-            name="location" 
-            value={location} 
-            onChange={(e) => { setLocation(e.target.value) }}
-            />
+          <input
+            type="text"
+            name="location"
+            value={location}
+            onChange={(e) => {
+              setLocation(e.target.value);
+            }}
+          />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           Date:
-          <input 
-            type="date" 
-            name="date" 
-            value={date} 
-            onChange={(e) => { setDate(e.target.value) }}
-            />
+          <input
+            type="date"
+            name="date"
+            value={date}
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
+          />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           Image:
           <input
             type="text"
             name="imageURL"
             placeholder="paste image URL"
             value={imageURL}
-            onChange={(e) => { setImageURL(e.target.value) }}
+            onChange={(e) => {
+              setImageURL(e.target.value);
+            }}
           />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           URL:
-          <input 
-            type="text" 
-            name="URL" 
+          <input
+            type="text"
+            name="URL"
             placeholder=""
             value={URL}
-            onChange={(e) => { setURL(e.target.value) }}
-            />
+            onChange={(e) => {
+              setURL(e.target.value);
+            }}
+          />
         </label>
+<<<<<<< HEAD
         <br/>
         <label className="form">
+=======
+        <br />
+        <label>
+>>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
           Choose Category:
-          <select 
-            name="category" 
+          <select
+            name="category"
             value={category}
-            onChange={(e) => { setCategory(e.target.value) }}
-            >
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
+          >
             <option>Weather</option>
             <option>Selling</option>
             <option>Entertainment</option>
@@ -129,7 +172,7 @@ function HomePage() {
             <option>Other</option>
           </select>
         </label>
-        <br/>
+        <br />
         <button type="submit">Post</button>
       </form>
     </>

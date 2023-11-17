@@ -22,6 +22,8 @@
     [ ] Responsive.
     [ ] Delete the posts automatically after x days.
     [ ] Show the X first posts and then 'show more' button.
+    [ ] When click on button delete: add an cverlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
+    [X] Add prettier config.
 
 ## CATEGORIES (Pages with each category, )
 
