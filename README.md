@@ -3,7 +3,7 @@
 ## MVP:
 
     [X] API
-    [ ] APP / MAIN / HOMEPAGE
+    [X] APP / MAIN / HOMEPAGE
     [ ] READ: HOMEPAGE (Render the different categories pages)
     [ ] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url)
     [ ] DELETE: REMOVE AN EXISTING POST
@@ -21,9 +21,10 @@
     [ ] Loader / Skeleton.
     [ ] Responsive.
     [ ] Delete the posts automatically after x days.
-    [ ] Show the X first posts and then 'show more' button.
+    [X] Show the 6 first posts and then 'show more' button.
     [ ] When click on button delete: add an cverlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
     [X] Add prettier config.
+    [ ] Check the scroll down of the page works properly.
 
 ## CATEGORIES (Pages with each category, )
 
@@ -48,19 +49,20 @@ NAVBAR will have: --> Cris (work from here) [X]
 - Home [X]
 - Dropdown menu with the posts' categories pages [X]
 - About us [X]
-- Style [ ]
+- Style [X]
 
-ALL POSTS will have: --> Cris. [ ]
+ALL POSTS will have: --> Cris. [X]
 
 - All posts (without filter). Each post will show:
-  -- Image.
-  -- Title.
-  -- Location.
-  -- Date.
-  -- Category.
-  -- Button: edit.
-  -- Button: delete.
-- Style [ ]
+  -- Image. [X]
+  -- Title. [X]
+  -- Location. [X]
+  -- Date. [X]
+  -- Category. [X]
+  -- Button: edit. [ ]
+  -- Button: delete. [ ]
+- Style [/]
+- Show more button [X]
 
 POST DETAILS will have:
 

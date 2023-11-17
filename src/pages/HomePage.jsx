@@ -42,9 +42,9 @@ function HomePage() {
 
   return (
     <>
-    <h1>Random News; the Portal</h1>
+      <h1>Random News; the Portal</h1>
 
-    <h2>Submit your own news snippet!</h2>
+      <h2>Submit your own news snippet!</h2>
       <form onSubmit={handleSubmit}>
         <label className="form">
           Title:
@@ -58,13 +58,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           Description:
           <textarea
             type="text"
@@ -76,13 +71,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           Location:
           <input
             type="text"
@@ -93,13 +83,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           Date:
           <input
             type="date"
@@ -110,13 +95,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           Image:
           <input
             type="text"
@@ -128,13 +108,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           URL:
           <input
             type="text"
@@ -146,13 +121,8 @@ function HomePage() {
             }}
           />
         </label>
-<<<<<<< HEAD
-        <br/>
-        <label className="form">
-=======
         <br />
-        <label>
->>>>>>> 64a4cdf8e341cccb31c3ea1c4b7dc0de590d553a
+        <label className="form">
           Choose Category:
           <select
             name="category"
