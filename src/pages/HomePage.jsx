@@ -43,10 +43,11 @@ function HomePage() {
 
   return (
     <>
-      <Navbar />
+    <h1>Random News; the Portal</h1>
 
+    <h2>Submit your own news snippet!</h2>
       <form onSubmit={handleSubmit}>
-        <label>
+        <label className="form">
           Title:
           <input 
             type="text" 
@@ -57,7 +58,7 @@ function HomePage() {
             />
         </label>
         <br/>
-        <label>
+        <label className="form">
           Description:
           <textarea
             type="text"
@@ -68,7 +69,7 @@ function HomePage() {
           />
         </label>
         <br/>
-        <label>
+        <label className="form">
           Location:
           <input 
             type="text" 
@@ -78,7 +79,7 @@ function HomePage() {
             />
         </label>
         <br/>
-        <label>
+        <label className="form">
           Date:
           <input 
             type="date" 
@@ -88,7 +89,7 @@ function HomePage() {
             />
         </label>
         <br/>
-        <label>
+        <label className="form">
           Image:
           <input
             type="text"
@@ -99,7 +100,7 @@ function HomePage() {
           />
         </label>
         <br/>
-        <label>
+        <label className="form">
           URL:
           <input 
             type="text" 
@@ -110,7 +111,7 @@ function HomePage() {
             />
         </label>
         <br/>
-        <label>
+        <label className="form">
           Choose Category:
           <select 
             name="category" 
