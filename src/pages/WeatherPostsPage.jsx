@@ -10,7 +10,7 @@ function WeatherPostsPage () {
             const array = response.data
             console.log(array)
         const weatherArray =  array.filter((elm) => {
-        return elm.category.toLowerCase() === "weather" 
+        return elm.category === "weather" 
         })
         setWeatherPosts(weatherArray)
     })
@@ -25,6 +25,17 @@ function WeatherPostsPage () {
     return(
         <>
         <h1>Weather Posts</h1>
+        {weatherPosts.map((elm) => {
+        return (
+            <div key={elm.id}>
+            <h2>{elm.title}</h2>
+            <p>{elm.location}</p>
+            <p>{elm.date}</p>
+            <image src={elm.image} />
+            </div>
+
+        )
+        })}
     </>
     )
 }
