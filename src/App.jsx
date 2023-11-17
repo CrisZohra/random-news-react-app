@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-
-import "./App.css";
+import "./index.css";
 
 import Navbar from "./components/Navbar";
 
@@ -19,29 +18,29 @@ import OtherPostsPage from "./pages/OtherPostsPage";
 import AboutUs from "./pages/AboutUs";
 
 function App() {
-
   return (
     <>
       <div className="App">
-
         <Navbar />
 
         <Routes>
-          <Route path="/" element={ <HomePage /> } />
-          <Route path="/posts" element={ <AllPostsPage /> } />
-          <Route path="/posts/:postid" element={ <PostDetailsPage /> } />
-          <Route path="/posts/weather" element={ <WeatherPostsPage /> } />
-          <Route path="/posts/traffic" element={ <TrafficPostsPage /> } />
-          <Route path="/posts/education" element={ <EducationPostsPage /> } />
-          <Route path="/posts/jobs" element={ <JobsPostsPage /> } />
-          <Route path="/posts/selling" element={ <SellingPostsPage /> } />
-          <Route path="/posts/entertaiment" element={ <EntertaimentPostsPage /> } />
-          <Route path="/posts/events" element={ <EventsPostsPage /> } />
-          <Route path="/posts/social" element={ <SocialPostsPage /> } />
-          <Route path="/posts/other" element={ <OtherPostsPage /> } />
-          <Route path="/about-us" element={ <AboutUs /> } />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/posts" element={<AllPostsPage />} />
+          <Route path="/posts/:postid" element={<PostDetailsPage />} />
+          <Route path="/posts/weather" element={<WeatherPostsPage />} />
+          <Route path="/posts/traffic" element={<TrafficPostsPage />} />
+          <Route path="/posts/education" element={<EducationPostsPage />} />
+          <Route path="/posts/jobs" element={<JobsPostsPage />} />
+          <Route path="/posts/selling" element={<SellingPostsPage />} />
+          <Route
+            path="/posts/entertaiment"
+            element={<EntertaimentPostsPage />}
+          />
+          <Route path="/posts/events" element={<EventsPostsPage />} />
+          <Route path="/posts/social" element={<SocialPostsPage />} />
+          <Route path="/posts/other" element={<OtherPostsPage />} />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
-    
       </div>
     </>
   );
