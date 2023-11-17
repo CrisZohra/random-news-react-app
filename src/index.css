@@ -18,13 +18,119 @@
   display: flex;
   color: white;
   height: 120px;
+  position: sticky;
 }
 
 .nav-link {
-  margin-left: 200px;
-  margin-right: 200px;
+  margin-left: 150px;
+  margin-right: 150px;
 }
 
 .form {
-  margin: 20px
+  margin: 20px;
+}
+
+.loader {
+  width: 40px;
+  aspect-ratio: 0.577;
+  clip-path: polygon(0 0, 100% 100%, 0 100%, 100% 0);
+  position: relative;
+  animation: l19 2s infinite linear;
+  overflow: hidden;
+}
+
+.loader:before {
+  content: "";
+  position: absolute;
+  inset: -150% -150%;
+  background: repeating-conic-gradient(
+    from 30deg,
+    #ffabab 0 60deg,
+    #abe4ff 0 120deg,
+    #ff7373 0 180deg
+  );
+  animation: inherit;
+  animation-direction: reverse;
+}
+@keyframes l19 {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px;
+}
+
+.loader-container p {
+  padding: 40px;
+}
+
+.all-posts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  padding: 40px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.all-posts h1 {
+  font-size: 30px;
+}
+
+.all-posts h2 {
+  font-size: 20px;
+}
+
+.all-posts h3 {
+  font-size: 15px;
+}
+
+.post-container {
+  background-color: #ffffffc7;
+  color: #190951;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(175, 171, 171, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.post-image {
+  width: 150px;
+  padding: 10px;
+  border-radius: 20px;
+  justify-self: center;
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+}
+
+.location img {
+  height: 30px;
+  margin-right: 5px;
+}
+
+.showmore-button {
+  background-color: #190951;
+  color: white;
+  border-radius: 20px;
+  border: 1px solid white;
+  padding: 10px;
+  width: 50%;
+}
+
+.showmore-button:hover {
+  background-color: rgba(255, 255, 255, 0.445);
+  color: #190951;
 }
