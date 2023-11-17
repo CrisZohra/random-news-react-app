@@ -14,10 +14,18 @@ function HomePage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const requestBody = {
+      title,
+      description,
+      location,
+      date,
+      category,
+      imageURL,
+      URL
+    }
     
-      axios.post("https://random-news-react-app.adaptable.app/posts")
-      .then()
-      .catch((error) => {
+      axios.post("https://random-news-react-app.adaptable.app/posts", requestBody)
+        .catch((error) => {
         console.log("Error creating new post...");
         console.log(error);    
       })
@@ -48,7 +56,7 @@ function HomePage() {
             onChange={(e) => {setTitle(e.target.value) }}
             />
         </label>
-
+        <br/>
         <label>
           Description:
           <textarea
@@ -59,7 +67,7 @@ function HomePage() {
             onChange={(e) => { setDescription(e.target.value) }}
           />
         </label>
-
+        <br/>
         <label>
           Location:
           <input 
@@ -69,7 +77,7 @@ function HomePage() {
             onChange={(e) => { setLocation(e.target.value) }}
             />
         </label>
-
+        <br/>
         <label>
           Date:
           <input 
@@ -79,7 +87,7 @@ function HomePage() {
             onChange={(e) => { setDate(e.target.value) }}
             />
         </label>
-
+        <br/>
         <label>
           Image:
           <input
@@ -90,7 +98,7 @@ function HomePage() {
             onChange={(e) => { setImageURL(e.target.value) }}
           />
         </label>
-
+        <br/>
         <label>
           URL:
           <input 
@@ -100,9 +108,8 @@ function HomePage() {
             value={URL}
             onChange={(e) => { setURL(e.target.value) }}
             />
-            
         </label>
-        
+        <br/>
         <label>
           Choose Category:
           <select 
@@ -121,6 +128,7 @@ function HomePage() {
             <option>Other</option>
           </select>
         </label>
+        <br/>
         <button type="submit">Post</button>
       </form>
     </>
