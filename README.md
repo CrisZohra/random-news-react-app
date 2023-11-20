@@ -4,10 +4,10 @@
 
     [X] API
     [X] APP / MAIN / HOMEPAGE
-    [ ] READ: HOMEPAGE (Render the different categories pages)
+    [X] READ: HOMEPAGE (Render the different categories pages)
     [X] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url) --> Zohra
-    [ ] DELETE: REMOVE AN EXISTING POST --> Zohra
-    [ ] UPDATE: EDIT EXISTING POST --> Zohra
+    [X] DELETE: REMOVE AN EXISTING POST --> Zohra
+    [X] UPDATE: EDIT EXISTING POST --> Zohra
 
 ## CSS
 

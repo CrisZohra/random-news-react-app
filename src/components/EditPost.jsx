@@ -6,28 +6,11 @@ const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function EditPost({postId, post}) {
 
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [location, setLocation] = useState("");
-  const [date, setDate] = useState("");
-  const [category, setCategory] = useState("other");
-  const [imageURL, setImageURL] = useState("");
-  const [URL, setURL] = useState("");
   const [editedPost, setEditedPost] = useState(post)
   
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    // const requestBody = {
-    //   title,
-    //   description,
-    //   location,
-    //   date,
-    //   category,
-    //   imageURL,
-    //   URL,
-    // };
 
     axios
       .put(`${API_URL}/${postId}`, editedPost)

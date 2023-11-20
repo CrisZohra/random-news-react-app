@@ -5,12 +5,15 @@ import { NavLink, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import Loader from "../components/Loader";
+import DeletePost from "../components/DeletePost";
+import EditPost from "../components/EditPost";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function PostDetailsPage(props) {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
+  const [toggleEdit, setToggleEdit] = useState(false);
 
   const { postId } = useParams();
 
@@ -25,6 +28,16 @@ function PostDetailsPage(props) {
         console.log(error);
       });
   }, [postId]);
+
+  const handlePostDelete = () => {
+      axios
+        .get(API_URL)
+        .then((response) => {
+          setPostDetails(response.data);
+        })
+        .catch((error) => error);
+    };
+
 
   return (
     <div className="post-details">
@@ -53,7 +66,20 @@ function PostDetailsPage(props) {
           <NavLink to={`${postDetails.url}`} target="_blank">
             Click here for more details.
           </NavLink>
-          <h3>Category: {postDetails.category}</h3>
+          <h3>Category: {postDetails.category}</h3>        
+          
+          <button
+                onClick={
+                  () => {
+                    setToggleEdit(!toggleEdit)
+                    
+                  } }
+                  >
+                Edit post
+              </button>
+              
+                {toggleEdit.toggle && <EditPost post={postDetails} postId={postDetails.id} />}
+          <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
         </div>
       )}
     </div>
