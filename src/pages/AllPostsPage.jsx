@@ -1,10 +1,9 @@
 import axios from "axios";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import Loader from "../components/Loader";
-
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
 
@@ -27,6 +26,15 @@ function AllPostsPage() {
 
   const handleShowMore = () => {
     setDisplayedPosts((prev) => prev + 6);
+  };
+
+  const handlePostDelete = () => {
+    axios
+      .get(API_URL)
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => error);
   };
 
   return (
@@ -55,9 +63,9 @@ function AllPostsPage() {
                 </div>
                 <h2>{post.date}</h2>
                 <h3>Category: {post.category}</h3>
-                <EditPost />
-                <DeletePost />
               </NavLink>
+              <EditPost />
+              <DeletePost postId={post.id} onDelete={handlePostDelete} />
             </div>
           );
         })
