@@ -4,9 +4,14 @@ import { useState, useEffect } from "react";
 
 import Loader from "../components/Loader";
 
+import DeletePost from "../components/DeletePost";
+import EditPost from "../components/EditPost";
+
+
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function AllPostsPage() {
+ 
   const [posts, setPosts] = useState([]);
   const [fetching, setFeching] = useState(true);
   const [displayedPosts, setDisplayedPosts] = useState(6);
@@ -47,6 +52,8 @@ function AllPostsPage() {
               </div>
               <h2>{post.date}</h2>
               <h3>Category: {post.category}</h3>
+              <EditPost/>
+              <DeletePost />
             </div>
           );
         })
