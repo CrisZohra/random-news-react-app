@@ -5,9 +5,9 @@
     [X] API
     [X] APP / MAIN / HOMEPAGE
     [ ] READ: HOMEPAGE (Render the different categories pages)
-    [ ] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url)
-    [ ] DELETE: REMOVE AN EXISTING POST
-    [ ] UPDATE: EDIT EXISTING POST
+    [X] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url) --> Zohra
+    [ ] DELETE: REMOVE AN EXISTING POST --> Zohra
+    [ ] UPDATE: EDIT EXISTING POST --> Zohra
 
 ## CSS
 
@@ -25,6 +25,8 @@
     [ ] When click on button delete: add an cverlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
     [X] Add prettier config.
     [ ] Check the scroll down of the page works properly.
+    [ ] Likes and dislikes for he posts.
+    [ ] Comments.
 
 ## CATEGORIES (Pages with each category, )
 
@@ -39,10 +41,10 @@
     - Education.
     - Other.
 
-HOMEPAGE will have: --> Zohra [ ]
+HOMEPAGE will have: --> Zohra [X]
 
 - Component: Navbar. --> Cris [X]
-- Component: AddPost.jsx --> Zohra [ ]
+- Component: AddPost.jsx --> Zohra [X]
 
 NAVBAR will have: --> Cris (work from here) [X]
 
@@ -59,12 +61,12 @@ ALL POSTS will have: --> Cris. [X]
   -- Location. [X]
   -- Date. [X]
   -- Category. [X]
-  -- Button: edit. [ ]
-  -- Button: delete. [ ]
+  -- Button: edit. [ ] --> Zohra
+  -- Button: delete. [ ] --> Zohra
 - Style [/]
 - Show more button [X]
 
-POST DETAILS will have:
+POST DETAILS will have: --> Cris [X]
 
 - Just one post with all the properties except the id (image, title, description, location, date, image, url and category).
 - Button: edit.
