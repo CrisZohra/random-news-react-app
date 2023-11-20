@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+import ConfirmModal from "./ConfirmModal";
+
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function DeletePost({ postId, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   function deletePost() {
     setIsDeleting(true);
@@ -13,6 +16,8 @@ function DeletePost({ postId, onDelete }) {
       .then(() => {
         console.log("Post deleted");
         onDelete();
+        setIsDeleting(false);
+        setIsConfirmationOpen(false);
       })
       .catch((error) => {
         console.error("Error deleting post:", error);
@@ -21,18 +26,20 @@ function DeletePost({ postId, onDelete }) {
   }
 
   const handlePostDelete = () => {
-    const shouldDelete = window.confirm(
-      "Are you sure you want to delete this post?"
-    );
-    if (shouldDelete) {
-      deletePost();
-    }
+    setIsConfirmationOpen(true);
   };
 
   return (
-    <button onClick={handlePostDelete} disabled={isDeleting}>
-      {isDeleting ? "Deleting..." : "Delete"}
-    </button>
+    <>
+      <button onClick={handlePostDelete} disabled={isDeleting}>
+        {isDeleting ? "Deleting..." : "Delete"}
+      </button>
+      <ConfirmModal
+        isOpen={isConfirmationOpen}
+        onClose={() => setIsConfirmationOpen(false)}
+        onConfirm={deletePost}
+      />
+    </>
   );
 }
 
