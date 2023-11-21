@@ -14,7 +14,7 @@ const API_URL = "https://random-news-react-app.adaptable.app/posts";
 function PostDetailsPage(props) {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
-  const [toggleEdit, setToggleEdit] = useState(false);
+  const [toggle, setToggle] = useState(false);
 
   const { postId } = useParams();
 
@@ -73,14 +73,14 @@ function PostDetailsPage(props) {
           <button
                 onClick={
                   () => {
-                    setToggleEdit(!toggleEdit)
-                    
+                    setToggle(!toggle)
                   } }
                   >
                 Edit post
               </button>
               
-                {toggleEdit.toggle && <EditPost post={postDetails} postId={postDetails.id} />}
+                {toggle && <EditPost post={postDetails} postId={postDetails.id} />}
+                
           <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
         </div>
       )}

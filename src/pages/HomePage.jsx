@@ -7,7 +7,7 @@ function HomePage() {
 
   return (
     <>
-      <h1>Random News; the Portal</h1>
+      <h1>What now? The Portal</h1>
     <SearchBar/>
       < AddPost />
       <Footer/>
