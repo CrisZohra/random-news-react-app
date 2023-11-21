@@ -3,14 +3,12 @@ import Footer from "../components/Footer";
 import SearchBar from "../components/SearchBar";
 
 function HomePage() {
-
-
   return (
     <>
-      <h1>What now? The Portal</h1>
-    <SearchBar/>
-      < AddPost />
-      <Footer/>
+      <img src="./src/images/title4.png" alt="what now? title" />
+      <SearchBar />
+      <AddPost />
+      <Footer />
     </>
   );
 }
