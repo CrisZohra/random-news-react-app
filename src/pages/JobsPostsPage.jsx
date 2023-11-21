@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
 import Footer from "../components/Footer";
-import SearchBar from "../components/SearchBar";
+import LikesButtons from "../components/LikesButtons";
 
 function JobsPostsPage () {
     const [jobPosts, setJobPosts] = useState([])
@@ -37,10 +37,10 @@ const handlePostDelete = () => {
     return(
         <>
         <h1>Job Posts</h1>
-        <SearchBar/>
         {jobPosts.map((elm, i) => {
         return (
             <div key={elm.id}>
+              <LikesButtons/>
             <h2>{elm.title}</h2>
             <p>{elm.location}</p>
             <p>{elm.date}</p>

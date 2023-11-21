@@ -8,6 +8,7 @@ import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
 import Footer from "../components/Footer";
+import LikesButtons from "../components/LikesButtons";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
@@ -47,6 +48,7 @@ function PostDetailsPage(props) {
         <Loader />
         ) : (
           <div className="details-container">
+            <LikesButtons/>
           <h1>{postDetails.title}</h1>
           {postDetails.image && (
             <img

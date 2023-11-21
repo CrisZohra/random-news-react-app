@@ -1,9 +1,9 @@
 function Loader() {
   return (
-    <div className="loader-container">
+    <section className="loader-container">
       <div className="loader" />
       <p>Loading...</p>
-    </div>
+    </section>
   );
 }
 
