@@ -1,20 +1,89 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
+import SearchIcon from "@mui/icons-material/Search";
+import { PostsContext } from "../context/PostsStore";
+import axios from "axios";
 
-function FilterPosts(props) {
+const API_URL = "https://random-news-react-app.adaptable.app/";
+const POSTS_URL = `${API_URL}posts/`;
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    width: "100%",
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
+
+function FilterPosts() {
   const [string, setString] = useState("");
+  const { updatePosts, setLoadingPosts } = useContext(PostsContext);
+
+  const handleFilterPosts = (query) => {
+    setLoadingPosts(true);
+
+    axios
+      .get(`${POSTS_URL}search?q=${query}`)
+      .then((response) => {
+        updatePosts(response.data);
+        setLoadingPosts(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
-    <input
-      type="text"
-      name="filteredPosts"
-      placeholder="Search..."
-      value={string}
-      onChange={(e) => {
-        const newValue = e.target.value;
-        setString(newValue);
-        props.filterPosts(newValue);
-      }}
-    />
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        value={string}
+        placeholder="Search…"
+        inputProps={{ "aria-label": "search" }}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          setString(newValue);
+          handleFilterPosts(newValue);
+        }}
+      />
+    </Search>
   );
 }
 
