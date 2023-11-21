@@ -6,6 +6,8 @@ import { NavLink } from "react-router-dom";
 import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
@@ -41,8 +43,9 @@ function AllPostsPage() {
     console.log(toggleEdit);
   }, [toggleEdit]);
   return (
+    <>
+    <SearchBar/>
     <section className="all-posts">
-      
       {fetching ? (
         <Loader />
       ) : (
@@ -53,16 +56,16 @@ function AllPostsPage() {
                 <h1>{post.title} </h1>
                 {post.image && (
                   <img
-                    src={post.image}
-                    alt={`${post.title} photo`}
-                    className="post-image"
+                  src={post.image}
+                  alt={`${post.title} photo`}
+                  className="post-image"
                   />
-                )}
+                  )}
                 <div className="location">
                   <img
                     src="./src/images/location-icon.png"
                     alt="location icon"
-                  />
+                    />
                   <h2> {post.location} </h2>
                 </div>
                 <h2>{post.date}</h2>
@@ -71,23 +74,23 @@ function AllPostsPage() {
               <button
                 onClick={
                   () =>
-                    toggleEdit.toggle && i !== toggleEdit.index //checks if toggle is true and index is different from current post
-                      ? setToggleEdit((prev) => ({
-                          ...prev, // if so, we are just clicking edit for another post, so change index
-                          index: i
-                        }))
+                  toggleEdit.toggle && i !== toggleEdit.index //checks if toggle is true and index is different from current post
+                  ? setToggleEdit((prev) => ({
+                    ...prev, // if so, we are just clicking edit for another post, so change index
+                    index: i
+                  }))
                       : setToggleEdit((prev) => ({
                           toggle: !prev.toggle,
                           index: !prev.toggle ? i : null,
                         })) // if i is not different from current index, we hide the edit
-                }
-              >
+                      }
+                      >
                 Edit post
               </button>
               
               {toggleEdit.toggle && toggleEdit.index === i && ( // if toggle is true we show the edit form (also checking index to make sure we open the right form)
                 <EditPost post={post} postId={post.id} />
-              )}
+                )}
 
               <DeletePost postId={post.id} onDelete={handlePostDelete} />
             </div>
@@ -101,6 +104,8 @@ function AllPostsPage() {
         </button>
       )}
     </section>
+    <Footer/>
+    </>
   );
 }
 

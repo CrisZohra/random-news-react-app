@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
 function EducationPostsPage () {
     const [educationPosts, setEducationPosts] = useState([])
@@ -35,6 +37,7 @@ function EducationPostsPage () {
     return(
         <>
         <h1>Education Posts</h1>
+        <SearchBar/>
         {educationPosts.map((elm, i) => {
         return (
             <div key={elm.id}>
@@ -68,6 +71,7 @@ function EducationPostsPage () {
             </div>
         )
         })}
+        <Footer/>
     </>
     )
 }

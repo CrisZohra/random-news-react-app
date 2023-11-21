@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
 function TrafficPostsPage () {
     const [trafficPosts, setTrafficPosts] = useState([])
@@ -35,6 +37,7 @@ const handlePostDelete = () => {
     return(
         <>
         <h1>Traffic Posts</h1>
+        <SearchBar/>
         {trafficPosts.map((elm, i) => {
         return (
             <div key={elm.id}>
@@ -68,6 +71,7 @@ const handlePostDelete = () => {
             </div>
         )
         })}
+        <Footer />
     </>
     )
 }

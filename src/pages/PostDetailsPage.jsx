@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
+import Footer from "../components/Footer";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
@@ -40,17 +41,18 @@ function PostDetailsPage(props) {
 
 
   return (
+    <>
     <div className="post-details">
       {fetching ? (
         <Loader />
-      ) : (
-        <div className="details-container">
+        ) : (
+          <div className="details-container">
           <h1>{postDetails.title}</h1>
           {postDetails.image && (
             <img
-              src={postDetails.image}
-              alt={`${postDetails.title} photo`}
-              className="details-image"
+            src={postDetails.image}
+            alt={`${postDetails.title} photo`}
+            className="details-image"
             />
           )}
           <div className="details-location">
@@ -58,7 +60,7 @@ function PostDetailsPage(props) {
               src="../src/images/location-icon.png"
               alt="location icon"
               className="details-location-icon"
-            />
+              />
             <h2> {postDetails.location} </h2>
           </div>
           <h2>{postDetails.date}</h2>
@@ -83,6 +85,8 @@ function PostDetailsPage(props) {
         </div>
       )}
     </div>
+    <Footer/>
+                    </>
   );
 }
 

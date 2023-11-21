@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
+import Footer from "../components/Footer";
+import SearchBar from "../components/SearchBar";
 
 function WeatherPostsPage () {
     const [weatherPosts, setWeatherPosts] = useState([])
@@ -34,6 +36,7 @@ const handlePostDelete = () => {
     return(
         <>
         <h1>Weather Posts</h1>
+        <SearchBar/>
         {weatherPosts.map((elm, i) => {
         return (
             <div key={elm.id}>
@@ -64,10 +67,10 @@ const handlePostDelete = () => {
               )}
 
               <DeletePost postId={elm.id} onDelete={handlePostDelete} />
-            </div>
-
+            </div>    
         )
         })}
+        < Footer />
     </>
     )
 }
