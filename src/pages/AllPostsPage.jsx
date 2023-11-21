@@ -7,7 +7,7 @@ import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
 import Footer from "../components/Footer";
-import SearchBar from "../components/SearchBar";
+import LikesButtons from "../components/LikesButtons";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
@@ -16,6 +16,7 @@ function AllPostsPage() {
   const [fetching, setFeching] = useState(true);
   const [displayedPosts, setDisplayedPosts] = useState(6);
   const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null }); //initial state for toggling
+  
   useEffect(() => {
     axios
       .get(API_URL)
@@ -39,19 +40,16 @@ function AllPostsPage() {
       .catch((error) => error);
   };
 
-  useEffect(() => {
-    console.log(toggleEdit);
-  }, [toggleEdit]);
   return (
     <>
-    <SearchBar/>
     <section className="all-posts">
       {fetching ? (
         <Loader />
-      ) : (
-        posts.slice(0, displayedPosts).map((post, i) => {
-          return (
-            <div key={post.id} className="post-container">
+        ) : (
+          posts.slice(0, displayedPosts).map((post, i) => {
+            return (
+              <div key={post.id} className="post-container">
+                <LikesButtons />
               <NavLink to={`/posts/${post.id}`}>
                 <h1>{post.title} </h1>
                 {post.image && (
@@ -87,7 +85,6 @@ function AllPostsPage() {
                       >
                 Edit post
               </button>
-              
               {toggleEdit.toggle && toggleEdit.index === i && ( // if toggle is true we show the edit form (also checking index to make sure we open the right form)
                 <EditPost post={post} postId={post.id} />
                 )}

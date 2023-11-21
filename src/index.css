@@ -64,6 +64,7 @@
   justify-content: center;
   align-items: center;
   padding: 100px;
+  position:static;
 }
 
 .loader-container p {
@@ -133,4 +134,15 @@
 .showmore-button:hover {
   background-color: rgba(255, 255, 255, 0.445);
   color: #190951;
+}
+
+.button-container {
+display: flex;
+flex-direction: row;
+}
+
+.button {
+  margin: 2px;
+  border: 0px;
+  background-color: transparent;
 }
