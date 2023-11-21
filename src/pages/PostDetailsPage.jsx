@@ -13,7 +13,7 @@ import Comments from "../components/Comments";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
-function PostDetailsPage(props) {
+function PostDetailsPage() {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
   const [toggle, setToggle] = useState(false);
@@ -33,80 +33,88 @@ function PostDetailsPage(props) {
   }, [postId]);
 
   const handlePostDelete = () => {
-      axios
-        .get(API_URL)
-        .then((response) => {
-          setPostDetails(response.data);
-        })
-        .catch((error) => error);
-    };
+    axios
+      .get(API_URL)
+      .then((response) => {
+        setPostDetails(response.data);
+      })
+      .catch((error) => error);
+  };
 
+  const handleCancelEdit = () => {
+    setToggle(false);
+  };
 
   return (
     <>
-    <div className="post-details">
-      {fetching ? (
-        <Loader />
+      <div className="post-details">
+        {fetching ? (
+          <Loader />
         ) : (
           <div className="details-container">
-            <LikesButtons/>
-          <h1>{postDetails.title}</h1>
-          {postDetails.image && (
-            <img
-            src={postDetails.image}
-            alt={`${postDetails.title} photo`}
-            className="details-image"
-            />
-          )}
-          <div className="details-location">
-            <img
-              src="../src/images/location-icon.png"
-              alt="location icon"
-              className="details-location-icon"
+            <LikesButtons />
+            <h1>{postDetails.title}</h1>
+            {postDetails.image && (
+              <img
+                src={postDetails.image}
+                alt={`${postDetails.title} photo`}
+                className="details-image"
               />
-            <h2> {postDetails.location} </h2>
+            )}
+            <div className="details-location">
+              <img
+                src="../src/images/location-icon.png"
+                alt="location icon"
+                className="details-location-icon"
+              />
+              <h2> {postDetails.location} </h2>
+            </div>
+            <h2>{postDetails.date}</h2>
+            <h3>{postDetails.description}</h3>
+            <NavLink to={`${postDetails.url}`} target="_blank">
+              Click here for more details.
+            </NavLink>
+            <h3>Category: {postDetails.category}</h3>
+
+            <button
+              onClick={() => {
+                setToggle(!toggle);
+              }}
+            >
+              Edit post
+            </button>
+
+            {toggle && (
+              <EditPost
+                post={postDetails}
+                postId={postDetails.id}
+                onExitEditing={handleCancelEdit}
+              />
+            )}
+
+            <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
+
+            <button
+              onClick={() => {
+                toggleComments.toggle && i !== toggleComments.index
+                  ? setToggleComments((prev) => ({
+                      ...prev,
+                      index: i,
+                    }))
+                  : setToggleComments((prev) => ({
+                      toggle: !prev.toggle,
+                      index: !prev.toggle ? i : null,
+                    }));
+              }}
+            >
+              Show comments
+            </button>
+            {toggleComments.toggle && toggleComments.index == i && <Comments />}
           </div>
-          <h2>{postDetails.date}</h2>
-          <h3>{postDetails.description}</h3>
-          <NavLink to={`${postDetails.url}`} target="_blank">
-            Click here for more details.
-          </NavLink>
-          <h3>Category: {postDetails.category}</h3>        
-          
-          <button
-                onClick={
-                  () => {
-                    setToggle(!toggle)
-                  } }
-                  >
-                Edit post
-              </button>
-              
-                {toggle && <EditPost post={postDetails} postId={postDetails.id} />}
-                
-          <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
-          <button
-                  onClick={() => {
-                    toggleComments.toggle && i !== toggleComments.index
-                      ? setToggleComments((prev) => ({
-                          ...prev,
-                          index: i,
-                        }))
-                      : setToggleComments((prev) => ({
-                          toggle: !prev.toggle,
-                          index: !prev.toggle ? i : null,
-                        }));
-                  }}
-                >
-                  Show comments
-                </button>
-                {toggleComments.toggle &&
-                  toggleComments.index == i && (<Comments />)}
-        </div>
-      )}
-    </div>
-    <Footer/>
-                    </>
+        )}
+      </div>
+      <Footer />
+    </>
   );
 }
 
