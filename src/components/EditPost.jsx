@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import ConfirmModal from "./ConfirmModal";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
-function EditPost({postId, post}) {
-
-  const [editedPost, setEditedPost] = useState(post)
-  
+function EditPost({ postId, post }) {
+  const [editedPost, setEditedPost] = useState(post);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
+    setIsConfirmationOpen(true);
+  };
 
+  const confirmEdit = () => {
     axios
       .put(`${API_URL}/${postId}`, editedPost)
       .then(() => {
@@ -21,8 +23,13 @@ function EditPost({postId, post}) {
         console.log("Error updating post...");
         console.log(error);
       });
+
+    setIsConfirmationOpen(false);
   };
- 
+
+  const cancelEdit = () => {
+    setIsConfirmationOpen(false);
+  };
 
   return (
     <form onSubmit={handleFormSubmit}>
@@ -35,7 +42,10 @@ function EditPost({postId, post}) {
           required={true}
           value={editedPost.title}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
             // setTitle(e.target.value);
           }}
         />
@@ -50,7 +60,10 @@ function EditPost({postId, post}) {
           required={true}
           value={editedPost.description}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setDescription(e.target.value);
           }}
@@ -65,7 +78,10 @@ function EditPost({postId, post}) {
           placeholder="Specify the location"
           value={editedPost.location}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setLocation(e.target.value);
           }}
@@ -80,7 +96,10 @@ function EditPost({postId, post}) {
           placeholder="Set the date"
           value={editedPost.date}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setDate(e.target.value);
           }}
@@ -95,7 +114,10 @@ function EditPost({postId, post}) {
           placeholder="Paste image URL"
           value={editedPost.imageURL}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setImageURL(e.target.value);
           }}
@@ -110,7 +132,10 @@ function EditPost({postId, post}) {
           placeholder="Add a URL"
           value={editedPost.URL}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setURL(e.target.value);
           }}
@@ -123,7 +148,10 @@ function EditPost({postId, post}) {
           name="category"
           value={editedPost.category}
           onChange={(e) => {
-            setEditedPost(prev => ({...prev, [e.target.name] : e.target.value}))
+            setEditedPost((prev) => ({
+              ...prev,
+              [e.target.name]: e.target.value,
+            }));
 
             // setCategory(e.target.value);
           }}
@@ -141,6 +169,14 @@ function EditPost({postId, post}) {
       </label>
       <br />
       <button type="submit">Edit</button>
+      {isConfirmationOpen && (
+        <ConfirmModal
+          isOpen={isConfirmationOpen}
+          onClose={cancelEdit}
+          onConfirm={confirmEdit}
+          message="Are you sure you want to edit this post?"
+        />
+      )}
     </form>
   );
 }

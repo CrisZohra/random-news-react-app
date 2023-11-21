@@ -38,6 +38,7 @@ function DeletePost({ postId, onDelete }) {
         isOpen={isConfirmationOpen}
         onClose={() => setIsConfirmationOpen(false)}
         onConfirm={deletePost}
+        message={"Are you sure you want to delete this post?"}
       />
     </>
   );

@@ -22,7 +22,8 @@
     [ ] Responsive.
     [ ] Delete the posts automatically after x days.
     [X] Show the 6 first posts and then 'show more' button.
-    [ ] When click on button delete: add an cverlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
+    [X] When click on button delete: add an overlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
+    [X] Also on edit button.
     [X] Add prettier config.
     [ ] Check the scroll down of the page works properly.
     [ ] Likes and dislikes for he posts.
@@ -61,8 +62,8 @@ ALL POSTS will have: --> Cris. [X]
   -- Location. [X]
   -- Date. [X]
   -- Category. [X]
-  -- Button: edit. [ ] --> Zohra
-  -- Button: delete. [ ] --> Zohra
+  -- Button: edit. [X] --> Zohra
+  -- Button: delete. [X] --> Zohra
 - Style [/]
 - Show more button [X]
 
