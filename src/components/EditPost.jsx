@@ -4,7 +4,7 @@ import ConfirmModal from "./ConfirmModal";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
-function EditPost({ postId, post }) {
+function EditPost({ postId, post, onExitEditing }) {
   const [editedPost, setEditedPost] = useState(post);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
@@ -18,6 +18,7 @@ function EditPost({ postId, post }) {
       .put(`${API_URL}/${postId}`, editedPost)
       .then(() => {
         console.log("Post edited");
+        onExitEditing();
       })
       .catch((error) => {
         console.log("Error updating post...");
@@ -29,6 +30,7 @@ function EditPost({ postId, post }) {
 
   const cancelEdit = () => {
     setIsConfirmationOpen(false);
+    onExitEditing();
   };
 
   return (
