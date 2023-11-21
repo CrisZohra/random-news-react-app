@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 function HomePage() {
   return (
     <>
-      <h1>What now? The Portal</h1>
+      <img src="./src/images/title4.png" alt="" />
       <AddPost />
       <Footer />
     </>
