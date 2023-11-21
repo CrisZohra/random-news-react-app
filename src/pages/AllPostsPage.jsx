@@ -9,19 +9,39 @@ import EditPost from "../components/EditPost";
 import Footer from "../components/Footer";
 import LikesButtons from "../components/LikesButtons";
 import Comments from "../components/Comments";
+import FilterPosts from "../components/FilterPosts";
 
-const API_URL = "https://random-news-react-app.adaptable.app/posts";
+// const API_URL = "http://localhost:4001/";
+const API_URL = "https://random-news-react-app.adaptable.app/";
+const POSTS_URL = `${API_URL}posts/`;
 
 function AllPostsPage() {
   const [posts, setPosts] = useState([]);
   const [fetching, setFeching] = useState(true);
   const [displayedPosts, setDisplayedPosts] = useState(6);
   const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null }); //initial state for toggling
-  const [toggleComments, setToggleComments] = useState({toggle: false, index: null});
+  const [toggleComments, setToggleComments] = useState({
+    toggle: false,
+    index: null,
+  });
+
+  const filterPosts = (query) => {
+    setFeching(true);
+
+    axios
+      .get(`${POSTS_URL}search?q=${query}`)
+      .then((response) => {
+        setPosts(response.data);
+        setFeching(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     axios
-      .get(API_URL)
+      .get(POSTS_URL)
       .then((response) => {
         setPosts(response.data);
         setFeching(false);
@@ -31,6 +51,10 @@ function AllPostsPage() {
 
   const handleShowMore = () => {
     setDisplayedPosts((prev) => prev + 6);
+  };
+
+  const handleCancelEdit = () => {
+    setToggleEdit({ toggle: false, index: null });
   };
 
   const handlePostDelete = () => {
@@ -44,6 +68,8 @@ function AllPostsPage() {
 
   return (
     <>
+      <FilterPosts filterPosts={filterPosts} />
+
       <section className="all-posts">
         {fetching ? (
           <Loader />
@@ -91,9 +117,13 @@ function AllPostsPage() {
 
                 {toggleEdit.toggle &&
                   toggleEdit.index === i && ( // if toggle is true we show the edit form (also checking index to make sure we open the right form)
-                    <EditPost post={post} postId={post.id} />
+                    <EditPost
+                      post={post}
+                      postId={post.id}
+                      onExitEditing={handleCancelEdit}
+                    />
                   )}
-<DeletePost postId={post.id} onDelete={handlePostDelete} />
+                <DeletePost postId={post.id} onDelete={handlePostDelete} />
 
                 <button
                   onClick={() => {
@@ -110,8 +140,9 @@ function AllPostsPage() {
                 >
                   Show comments
                 </button>
-                {toggleComments.toggle &&
-                  toggleComments.index == i && (<Comments />)}
+                {toggleComments.toggle && toggleComments.index == i && (
+                  <Comments />
+                )}
               </div>
             );
           })
