@@ -26,7 +26,7 @@
     [X] Also on edit button.
     [X] Add prettier config.
     [ ] Check the scroll down of the page works properly.
-    [ ] Likes and dislikes for he posts.
+    [x] Likes and dislikes for he posts.
     [ ] Comments.
 
 ## CATEGORIES (Pages with each category, )
