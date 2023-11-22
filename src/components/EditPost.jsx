@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import ConfirmModal from "./ConfirmModal";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
-function EditPost({ postId, post, onExitEditing }) {
+function EditPost({ post, onExitEditing }) {
   const [editedPost, setEditedPost] = useState(post);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
@@ -15,7 +15,7 @@ function EditPost({ postId, post, onExitEditing }) {
 
   const confirmEdit = () => {
     axios
-      .put(`${API_URL}/${postId}`, editedPost)
+      .put(`${API_URL}/${post.id}`, editedPost)
       .then(() => {
         console.log("Post edited");
         onExitEditing();
@@ -170,6 +170,7 @@ function EditPost({ postId, post, onExitEditing }) {
         </select>
       </label>
       <br />
+
       <button type="submit">Edit</button>
       {isConfirmationOpen && (
         <ConfirmModal
