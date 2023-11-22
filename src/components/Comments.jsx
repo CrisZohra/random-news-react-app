@@ -1,6 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
 
 
 function AddComment(props) {
@@ -8,29 +7,47 @@ function AddComment(props) {
   
   const [comments, setComments] = useState([]);
   const [commentMessage, setCommentMessage] = useState("");
-
-  axios.get(API_URL)
-.then(response => {
-  setComments(response.data.comments)
-})
-.catch(error => error)
-
-
-function handleSubmit(e) {
-  e.preventDefault();
-  console.log("form submitted");
   
-  {/* 
-  axios.post(API_URL, )
-  .then()
-  .catch(error => error)
+  useEffect(() => {
+    
+    axios.get(API_URL)
+    .then(response => {
+      setComments(response.data.comments)
+    })
+    .catch(error => error)
+  }, [])
+
   
-}
-*/}
+    
+  
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    console.log("form submitted");
+    console.log(commentMessage)
+
+    const requestBody = {
+      postId: props.postID,
+      message: commentMessage,
+    }
+    
+    axios.post("https://random-news-react-app.adaptable.app/comments", requestBody)
+
+    .then((response) => {
+      console.log("submitted: ",  comments)
+      setCommentMessage("")
+      
+     setComments(prev => [...prev, response.data])
+    })
+    .catch((error) => {
+    console.log("Error creating new comment...");
+    console.log(error);
+    
+  });
 }
 
-  return (
-    <>
+return (
+  <>
       <div>
         <form onSubmit={handleSubmit}>
           <input
@@ -42,7 +59,7 @@ function handleSubmit(e) {
                 setCommentMessage(e.target.value);
             }}
           />
-          <button type="submit">submit</button>
+          <button type="submit">Submit</button>
         </form>
       </div>
                 {comments.map((elm) => {
