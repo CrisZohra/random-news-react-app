@@ -10,7 +10,7 @@ import TrafficPostsPage from "./pages/TrafficPostsPage";
 import EducationPostsPage from "./pages/EducationPostsPage";
 import JobsPostsPage from "./pages/JobsPostsPage";
 import SellingPostsPage from "./pages/SellingPostsPage";
-import EntertaimentPostsPage from "./pages/EntertaimentPostsPage";
+import EntertainmentPostsPage from "./pages/EntertainmentPostsPage";
 import EventsPostsPage from "./pages/EventsPostsPage";
 import SocialPostsPage from "./pages/SocialPostsPage";
 import OtherPostsPage from "./pages/OtherPostsPage";
@@ -32,8 +32,8 @@ function App() {
           <Route path="/posts/jobs" element={<JobsPostsPage />} />
           <Route path="/posts/selling" element={<SellingPostsPage />} />
           <Route
-            path="/posts/entertaiment"
-            element={<EntertaimentPostsPage />}
+            path="/posts/entertainment"
+            element={<EntertainmentPostsPage />}
           />
           <Route path="/posts/events" element={<EventsPostsPage />} />
           <Route path="/posts/social" element={<SocialPostsPage />} />
