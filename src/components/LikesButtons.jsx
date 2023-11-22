@@ -1,6 +1,18 @@
-import { useEffect, useState } from "react";
-import thumbsUp from "/thumbs-up.png";
-import thumbsDown from "/thumbs-down.png";
+import { useState } from "react";
+import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import IconButton from "@mui/material/IconButton";
+
+const buttonStyles = {
+  display: "flex",
+  gap: "3px",
+  color: "#72335b",
+  fontSize: "20px",
+  "&:hover": {
+    color: "#72335b",
+    backgroundColor: "#72335b24",
+  },
+};
 
 function LikesButtons() {
   const [likes, setLikes] = useState(0);
@@ -8,7 +20,6 @@ function LikesButtons() {
   const [activeLikes, setActiveLikes] = useState(false);
   const [activeDislikes, setActiveDislikes] = useState(false);
 
-  
   function toggleLikes() {
     if (activeLikes == false) {
       setLikes(likes + 1);
@@ -32,14 +43,23 @@ function LikesButtons() {
 
   return (
     <div className="button-container">
-      <button className="button" onClick={toggleLikes}>
-        <img width="15px" src={thumbsUp} />
-        {" " + likes}
-      </button>
-      <button className="button" onClick={toggleDislikes}>
-        <img width="15px" src={thumbsDown} />
-        {" " + dislikes}
-      </button>
+      <IconButton
+        color="primary"
+        aria-label="add like"
+        sx={buttonStyles}
+        onClick={toggleLikes}
+      >
+        <ThumbUpIcon />
+        {likes}
+      </IconButton>
+      <IconButton
+        aria-label="add dislike"
+        sx={buttonStyles}
+        onClick={toggleDislikes}
+      >
+        <ThumbDownOffAltIcon />
+        {dislikes}
+      </IconButton>
     </div>
   );
 }
