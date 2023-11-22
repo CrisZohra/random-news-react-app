@@ -1,4 +1,4 @@
-import { Chip } from "@mui/material";
+import { Button, Chip } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -8,13 +8,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { red } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
-import * as React from "react";
+import { useState } from "react";
 import CardMenu from "./PostCardMenu";
 import { chipStyles } from "./Chips";
 import LikesButtons from "./LikesButtons";
 import icon from "/icon1.png";
 import locationLogo from "/location-icon.png";
 import { NavLink } from "react-router-dom";
+import Comments from "./Comments";
 
 const LocationLogo = styled("img")(() => ({
   height: "25px",
@@ -24,6 +25,7 @@ export default function PostCard({ post }) {
   const chipStyle = chipStyles.find(
     (style) => style.label.toLowerCase() === post.category.toLowerCase()
   );
+  const [toggleComments, setToggleComments] = useState(false);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -72,6 +74,21 @@ export default function PostCard({ post }) {
         >
           {post.description}
         </Typography>
+
+        <Button
+          onClick={() => setToggleComments((prev) => !prev)}
+          sx={{
+            color: "#72335b",
+            margin: "5px 0",
+            "&:hover": {
+              color: "#72335b",
+              backgroundColor: "#72335b24",
+            },
+          }}
+        >
+          {`${toggleComments ? "Hide" : "Show"} comments`}
+        </Button>
+        {toggleComments && <Comments postID={post.id} />}
       </CardContent>
       <CardActions disableSpacing>
         <LikesButtons />
