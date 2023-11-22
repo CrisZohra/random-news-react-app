@@ -12,13 +12,6 @@
   color: white;
 }
 
-.navbar {
-  display: flex;
-  color: white;
-  height: 120px;
-  position: sticky;
-}
-
 .nav-link {
   margin-left: 150px;
   margin-right: 150px;
@@ -156,6 +149,88 @@
   color: #fff9e9;
 }
 
-.chips {
+.chips-container {
   margin: 0 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+@media (max-width: 576px) {
+  .homepage-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .homepage-header img {
+    height: 220px;
+  }
+
+  .homepage-header-text {
+    padding: 10px;
+  }
+
+  .homepage-header h4 {
+    font-size: 15px;
+  }
+
+  div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
+    margin: 0;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .homepage-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  .homepage-header img {
+    height: 250px;
+  }
+
+  .homepage-header-text {
+    padding: 0;
+    margin-right: 20px;
+  }
+
+  .homepage-header h4 {
+    font-size: 15px;
+  }
+
+  div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
+    margin: 4px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  .homepage-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+
+  .homepage-header img {
+    height: 300px;
+  }
+
+  .homepage-header-text {
+    padding: 0;
+    margin-right: 20px;
+  }
+
+  .homepage-header h4 {
+    font-size: 20px;
+  }
+
+  div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
+    margin: 4px;
+  }
 }

@@ -75,7 +75,7 @@ export default function ClickableChips() {
   ];
 
   return (
-    <Stack direction="row" spacing={3} className="chips">
+    <Stack direction="row" spacing={3} className="chips-container">
       {chipStyles.map((style, index) => (
         <NavLink key={index} to={`/posts/${style.label.toLowerCase()}`}>
           <Chip
