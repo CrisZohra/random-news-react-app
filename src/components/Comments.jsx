@@ -1,34 +1,54 @@
+import axios from "axios";
 import { useState } from "react";
 
-function AddComment() {
-  const [comments, setComments] = useState(["first comment", "second comment"]);
-  const [comment, setComment] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log("form submitted");
-    setComments(...comments, comment);
-  }
-console.log(comment)
-console.log(comments)
+
+function AddComment(props) {
+  const API_URL = `https://random-news-react-app.adaptable.app/posts/${props.postID}?_embed=comments`
+  
+  const [comments, setComments] = useState([]);
+  const [commentMessage, setCommentMessage] = useState("");
+
+  axios.get(API_URL)
+.then(response => {
+  setComments(response.data.comments)
+})
+.catch(error => error)
+
+
+function handleSubmit(e) {
+  e.preventDefault();
+  console.log("form submitted");
+  
+  {/* 
+  axios.post(API_URL, )
+  .then()
+  .catch(error => error)
+  
+}
+*/}
+}
+
   return (
     <>
       <div>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
-            name="comment"
+            name="commentMessage"
             placeholder="Write your thoughts"
-            value={comment}
+            value={commentMessage}
             onChange={(e) => {
-                setComment(e.target.value);
+                setCommentMessage(e.target.value);
             }}
           />
-          <button>submit</button>
+          <button type="submit">submit</button>
         </form>
       </div>
-                {comments.map((comment) => {
-                  return <p>{comment}</p>;
+                {comments.map((elm) => {
+                  return (
+                  <p key={elm.id} >{elm.message}</p>
+                  )
                 })}
     </>
   );

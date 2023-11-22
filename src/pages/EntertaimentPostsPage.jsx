@@ -88,7 +88,7 @@ const handlePostDelete = () => {
                   Show comments
                 </button>
                 {toggleComments.toggle &&
-                  toggleComments.index == i && (<Comments />)}
+                  toggleComments.index == i && (<Comments postID={elm.id}/>)}
             </div>
         )
         })}

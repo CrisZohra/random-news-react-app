@@ -18,7 +18,7 @@ function PostDetailsPage() {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
   const [toggle, setToggle] = useState(false);    
-  const [toggleComments, setToggleComments] = useState({toggle: false, index: null});
+  const [toggleComments, setToggleComments] = useState(false);
 
   const { postId } = useParams();
 
@@ -95,24 +95,21 @@ function PostDetailsPage() {
             )}
 
             <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
-        {/*
+        
             <button
               onClick={() => {
-                toggleComments.toggle && i !== toggleComments.index
-                  ? setToggleComments((prev) => ({
-                      ...prev,
-                      index: i,
-                    }))
-                  : setToggleComments((prev) => ({
-                      toggle: !prev.toggle,
-                      index: !prev.toggle ? i : null,
-                    }));
+                setToggleComments(!toggleComments);
               }}
             >
               Show comments
             </button>
-            {toggleComments.toggle && toggleComments.index == i && <Comments />}
-          */}
+            
+            {toggleComments && (
+              <Comments 
+              postID={postDetails.id}
+              />)}
+
+          
                  
           </div>
         )}
