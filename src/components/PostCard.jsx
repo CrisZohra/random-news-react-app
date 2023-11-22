@@ -14,14 +14,15 @@ import { chipStyles } from "./Chips";
 import LikesButtons from "./LikesButtons";
 import icon from "/icon1.png";
 import locationLogo from "/location-icon.png";
+import { NavLink } from "react-router-dom";
 
 const LocationLogo = styled("img")(() => ({
   height: "25px",
 }));
 
-export default function PostCard(props) {
+export default function PostCard({ post }) {
   const chipStyle = chipStyles.find(
-    (style) => style.label.toLowerCase() === props.post.category.toLowerCase()
+    (style) => style.label.toLowerCase() === post.category.toLowerCase()
   );
 
   return (
@@ -32,8 +33,8 @@ export default function PostCard(props) {
             WN
           </Avatar>
         }
-        action={<CardMenu post={props.post} />}
-        title={props.post.title}
+        action={<CardMenu post={post} />}
+        title={post.title}
         subheader={
           <Typography
             variant="body2"
@@ -45,16 +46,18 @@ export default function PostCard(props) {
             }}
           >
             <LocationLogo src={locationLogo} alt="location icon" />
-            {props.post.location}
+            {post.location}
           </Typography>
         }
       />
-      <CardMedia
-        component="img"
-        height="194"
-        image={props.post.image || icon}
-        alt={props.post.title}
-      />
+      <NavLink to={`/posts/${post.id}`}>
+        <CardMedia
+          component="img"
+          height="194"
+          image={post.image || icon}
+          alt={post.title}
+        />
+      </NavLink>
       <CardContent>
         <Typography
           variant="body2"
@@ -67,7 +70,7 @@ export default function PostCard(props) {
             whiteSpace: "nowrap",
           }}
         >
-          {props.post.description}
+          {post.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
