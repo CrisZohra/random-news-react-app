@@ -149,13 +149,6 @@
   color: #fff9e9;
 }
 
-.chips-container {
-  margin: 0 70px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
 @media (max-width: 576px) {
   .homepage-header {
     display: flex;

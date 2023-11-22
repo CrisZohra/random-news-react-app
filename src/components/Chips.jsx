@@ -12,70 +12,74 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
 
-export default function ClickableChips() {
-  const handleClick = () => {
-    console.info("You clicked the Chip.");
-  };
+export const chipStyles = [
+  {
+    label: "Weather",
+    backgroundColor: "#dc6a36",
+    color: "#fff9e9",
+    icon: <WbSunnyIcon />,
+  },
+  {
+    label: "Traffic",
+    backgroundColor: "#81b29a",
+    color: "#fff9e9",
+    icon: <DirectionsIcon />,
+  },
+  {
+    label: "Education",
+    backgroundColor: "#3d405b",
+    color: "#fff9e9",
+    icon: <SchoolIcon />,
+  },
+  {
+    label: "Jobs",
+    backgroundColor: "#e09f3e",
+    color: "#fff9e9",
+    icon: <WorkIcon />,
+  },
+  {
+    label: "Selling",
+    backgroundColor: "#335c67",
+    color: "#fff9e9",
+    icon: <StorefrontIcon />,
+  },
+  {
+    label: "Entertainment",
+    backgroundColor: "#9e2a2b",
+    color: "#fff9e9",
+    icon: <TagFacesIcon />,
+  },
+  {
+    label: "Events",
+    backgroundColor: "#540b0e",
+    color: "#fff9e9",
+    icon: <CalendarMonthIcon />,
+  },
+  {
+    label: "Social",
+    backgroundColor: "#a78a7f",
+    color: "#fff9e9",
+    icon: <Diversity3Icon />,
+  },
+  {
+    label: "Other",
+    backgroundColor: "#b56576",
+    color: "#fff9e9",
+    icon: <AllInclusiveIcon />,
+  },
+];
 
-  const chipStyles = [
-    {
-      label: "Weather",
-      backgroundColor: "#dc6a36",
-      color: "#fff9e9",
-      icon: <WbSunnyIcon />,
-    },
-    {
-      label: "Traffic",
-      backgroundColor: "#81b29a",
-      color: "#fff9e9",
-      icon: <DirectionsIcon />,
-    },
-    {
-      label: "Education",
-      backgroundColor: "#3d405b",
-      color: "#fff9e9",
-      icon: <SchoolIcon />,
-    },
-    {
-      label: "Jobs",
-      backgroundColor: "#e09f3e",
-      color: "#fff9e9",
-      icon: <WorkIcon />,
-    },
-    {
-      label: "Selling",
-      backgroundColor: "#335c67",
-      color: "#fff9e9",
-      icon: <StorefrontIcon />,
-    },
-    {
-      label: "Entertainment",
-      backgroundColor: "#9e2a2b",
-      color: "#fff9e9",
-      icon: <TagFacesIcon />,
-    },
-    {
-      label: "Events",
-      backgroundColor: "#540b0e",
-      color: "#fff9e9",
-      icon: <CalendarMonthIcon />,
-    },
-    {
-      label: "Social",
-      backgroundColor: "#a78a7f",
-      color: "#fff9e9",
-      icon: <Diversity3Icon />,
-    },
-    {
-      label: "Other",
-      backgroundColor: "#b56576",
-      color: "#fff9e9",
-      icon: <AllInclusiveIcon />,
-    },
-  ];
-
+export default function Chips() {
   return (
-    <Stack direction="row" spacing={3} className="chips-container">
+    <Stack
+      direction="row"
+      spacing={3}
+      useFlexGap
+      flexWrap="wrap"
+      sx={{
+        margin: "0 50px",
+      }}
+    >
       {chipStyles.map((style, index) => (
         <NavLink key={index} to={`/posts/${style.label.toLowerCase()}`}>
           <Chip
@@ -83,13 +87,12 @@ export default function ClickableChips() {
             color="primary"
             variant="filled"
             icon={style.icon}
-            style={{
+            sx={{
               backgroundColor: style.backgroundColor,
               color: style.color,
               fontSize: "16px",
               fontFamily: "monospace",
             }}
-            onClick={handleClick}
           />
         </NavLink>
       ))}
