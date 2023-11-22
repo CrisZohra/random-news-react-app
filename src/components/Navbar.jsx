@@ -7,6 +7,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FilterPosts from "./FilterPosts";
 import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
+import icon from "/icon1.png"
 
 const StyledLogo = styled("img")(() => ({
   height: "80px",
@@ -31,7 +32,7 @@ export default function Navbar() {
           </IconButton>
 
           <StyledNavLink to="/">
-            <StyledLogo src="./src/images/icon1.png" alt="what now? icon" />
+            <StyledLogo src={icon} alt="what now? icon" />
           </StyledNavLink>
 
           <FilterPosts />
