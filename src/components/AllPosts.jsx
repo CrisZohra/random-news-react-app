@@ -20,7 +20,7 @@ function AllPosts() {
   const [displayedPosts, setDisplayedPosts] = useState(6);
   const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null }); //initial state for toggling
   const [toggleComments, setToggleComments] = useState({toggle: false, index: null});
-
+  const [ refresh, setRefresh] = useState(false)
   useEffect(() => {
     setLoadingPosts(true);
 
@@ -31,7 +31,7 @@ function AllPosts() {
         setLoadingPosts(false);
       })
       .catch((error) => error);
-  }, []);
+  }, [refresh]);
 
   const handleShowMore = () => {
     setDisplayedPosts((prev) => prev + 6);
@@ -49,6 +49,8 @@ function AllPosts() {
       })
       .catch((error) => error);
   };
+
+
 
   return (
     <section className="all-posts">
