@@ -1,11 +1,11 @@
 import AddPost from "../components/AddPost";
 import AllPosts from "../components/AllPosts";
 import Footer from "../components/Footer";
-
+import titlePic from "/title4.png"
 function HomePage() {
   return (
     <>
-      <img src="./src/images/title4.png" alt="" />
+      <img src={titlePic} alt="" />
       <AllPosts />
       <AddPost />
       <Footer />

@@ -45,7 +45,7 @@ const handlePostDelete = () => {
             <h2>{elm.title}</h2>
             <p>{elm.location}</p>
             <p>{elm.date}</p>
-            <image src={elm.image} />
+            <img src={elm.image} />
             
             <button
                 onClick={
@@ -69,6 +69,7 @@ const handlePostDelete = () => {
               )}
 
               <DeletePost postId={elm.id} onDelete={handlePostDelete} />
+             
               <button
                   onClick={() => {
                     toggleComments.toggle && i !== toggleComments.index

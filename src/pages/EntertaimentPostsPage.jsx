@@ -48,7 +48,7 @@ const handlePostDelete = () => {
             <LikesButtons/>
             <p>{elm.location}</p>
             <p>{elm.date}</p>
-            <image src={elm.image} />
+            <img src={elm.image} />
             
             <button
                 onClick={
@@ -71,7 +71,8 @@ const handlePostDelete = () => {
                 <EditPost post={elm} postId={elm.id} />
               )}
 
-              <DeletePost postId={elm.id} onDelete={handlePostDelete} /><button
+              <DeletePost postId={elm.id} onDelete={handlePostDelete} />
+              <button
                   onClick={() => {
                     toggleComments.toggle && i !== toggleComments.index
                       ? setToggleComments((prev) => ({

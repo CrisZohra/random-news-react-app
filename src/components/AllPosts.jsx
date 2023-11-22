@@ -8,6 +8,8 @@ import DeletePost from "./DeletePost";
 import EditPost from "./EditPost";
 import LikesButtons from "./LikesButtons";
 import { PostsContext } from "../context/PostsStore";
+import locationLogo from "/location-icon.png"
+import Comments from "./Comments"
 
 const API_URL = "https://random-news-react-app.adaptable.app/";
 const POSTS_URL = `${API_URL}posts/`;
@@ -17,6 +19,7 @@ function AllPosts() {
     useContext(PostsContext);
   const [displayedPosts, setDisplayedPosts] = useState(6);
   const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null }); //initial state for toggling
+  const [toggleComments, setToggleComments] = useState({toggle: false, index: null});
 
   useEffect(() => {
     setLoadingPosts(true);
@@ -67,7 +70,7 @@ function AllPosts() {
                 )}
                 <div className="location">
                   <img
-                    src="./src/images/location-icon.png"
+                    src={locationLogo}
                     alt="location icon"
                   />
                   <h2> {post.location} </h2>
@@ -101,6 +104,23 @@ function AllPosts() {
                 )}
 
               <DeletePost postId={post.id} onDelete={handlePostDelete} />
+              <button
+                  onClick={() => {
+                    toggleComments.toggle && i !== toggleComments.index
+                      ? setToggleComments((prev) => ({
+                          ...prev,
+                          index: i,
+                        }))
+                      : setToggleComments((prev) => ({
+                          toggle: !prev.toggle,
+                          index: !prev.toggle ? i : null,
+                        }));
+                  }}
+                >
+                  Show comments
+                </button>
+                {toggleComments.toggle &&
+                  toggleComments.index == i && (<Comments />)}
             </div>
           );
         })

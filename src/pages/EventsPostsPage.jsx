@@ -46,7 +46,7 @@ const handlePostDelete = () => {
             <h2>{elm.title}</h2>
             <p>{elm.location}</p>
             <p>{elm.date}</p>
-            <image src={elm.image} />
+            <img src={elm.image} />
 
             
             <button
