@@ -2,6 +2,8 @@ import AddPost from "../components/AddPost";
 import AllPosts from "../components/AllPosts";
 import Footer from "../components/Footer";
 import titlePic from "/title4.png";
+import Chips from "../components/Chips";
+
 function HomePage() {
   return (
     <>
@@ -13,6 +15,7 @@ function HomePage() {
           <h4>Dive in, Post Now!</h4>
         </div>
       </section>
+      <Chips />
       <AllPosts />
       <AddPost />
       <Footer />
