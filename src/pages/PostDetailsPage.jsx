@@ -14,6 +14,17 @@ import { Typography } from "@mui/material";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString("en-US", options);
+};
+
+const FormattedDateTypography = ({ date }) => {
+  const formattedDate = formatDate(date);
+
+  return <p>{formattedDate}</p>;
+};
+
 function PostDetailsPage() {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
@@ -36,11 +47,11 @@ function PostDetailsPage() {
   return (
     <div className="details">
       <Typography>
-          <div className="post-details-container">
-            {fetching ? (
-              <Loader />
-              ) : (
-                <div className="post-details">
+        <div className="post-details-container">
+          {fetching ? (
+            <Loader />
+          ) : (
+            <div className="post-details">
               <div className="details-container">
                 <div className="location-date">
                   <div className="details-location">
@@ -51,8 +62,8 @@ function PostDetailsPage() {
                     />
                     <p> {postDetails.location} </p>
                   </div>
-                  <p>{postDetails.date}</p>
-                <CardMenu post={postDetails} />
+                  <FormattedDateTypography date={postDetails.date} />
+                  <CardMenu post={postDetails} />
                 </div>
                 {postDetails.image && (
                   <img
@@ -66,27 +77,27 @@ function PostDetailsPage() {
                 <h6>Category: {postDetails.category}</h6>
                 <div className="post-bottom">
                   <div className="comments-container">
-                <Button
-                  onClick={() => setToggleComments((prev) => !prev)}
-                  sx={{
-                    color: "#72335b",
-                    margin: "10px",
-                    "&:hover": {
-                      color: "#72335b",
-                      backgroundColor: "#72335b24",
-                    },
-                  }}
-                  >
-                  {`${toggleComments ? "Hide" : "Show"} comments`}
-                </Button>
-                {toggleComments && <Comments postID={postDetails.id} />}
-                <hr className="hr" />
+                    <Button
+                      onClick={() => setToggleComments((prev) => !prev)}
+                      sx={{
+                        color: "#72335b",
+                        margin: "10px",
+                        "&:hover": {
+                          color: "#72335b",
+                          backgroundColor: "#72335b24",
+                        },
+                      }}
+                    >
+                      {`${toggleComments ? "Hide" : "Show"} comments`}
+                    </Button>
+                    {toggleComments && <Comments postID={postDetails.id} />}
+                    <hr className="hr" />
                   </div>
                   <LikesButtons />
-                  </div>
+                </div>
               </div>
-          </div>
-            )}
+            </div>
+          )}
         </div>
       </Typography>
     </div>
