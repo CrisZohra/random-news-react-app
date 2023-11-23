@@ -33,24 +33,14 @@ function PostDetailsPage() {
       });
   }, [postId, postDetails]);
 
-  const handlePostDelete = () => {
-    axios
-      .get(API_URL)
-      .then((response) => {
-        setPostDetails(response.data);
-      })
-      .catch((error) => error);
-  };
-
   return (
     <div className="details">
       <Typography>
-        <CardMenu post={postDetails} />
           <div className="post-details-container">
             {fetching ? (
               <Loader />
-            ) : (
-              <div className="post-details">
+              ) : (
+                <div className="post-details">
               <div className="details-container">
                 <div className="location-date">
                   <div className="details-location">
@@ -62,6 +52,7 @@ function PostDetailsPage() {
                     <p> {postDetails.location} </p>
                   </div>
                   <p>{postDetails.date}</p>
+                <CardMenu post={postDetails} />
                 </div>
                 {postDetails.image && (
                   <img
