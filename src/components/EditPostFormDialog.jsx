@@ -29,7 +29,6 @@ export default function EditPostFormDialog({ post, onClose }) {
       .put(`${API_URL}/${post.id}`, editedPost)
       .then((response) => {
         const editedPost = response.data;
-        console.log("Post edited");
 
         const postIndex = posts.findIndex((post) => post.id === editedPost.id);
         const updatedPosts = [...posts];

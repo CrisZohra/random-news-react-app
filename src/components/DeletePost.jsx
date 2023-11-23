@@ -5,7 +5,7 @@ import ConfirmModal from "./ConfirmModal";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
-function DeletePost({ postId, onDelete }) {
+export default function DeletePost({ postId, onDelete }) {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
 
@@ -43,5 +43,3 @@ function DeletePost({ postId, onDelete }) {
     </>
   );
 }
-
-export default DeletePost;

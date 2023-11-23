@@ -3,6 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import EditPostFormDialog from "./EditPostFormDialog";
+import DeletePostDialog from "./DeletePostDialog";
 
 const ITEM_HEIGHT = 48;
 
@@ -43,6 +44,7 @@ export default function CardMenu({ post }) {
         }}
       >
         <EditPostFormDialog post={post} onClose={handleClose} />
+        <DeletePostDialog post={post} onClose={handleClose} />
       </Menu>
     </div>
   );
