@@ -1,97 +1,55 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import DeletePost from "../components/DeletePost";
-import EditPost from "../components/EditPost";
-import LikesButtons from "../components/LikesButtons";
-import Comments from "../components/Comments";
+import { useContext, useEffect, useState } from "react";
+import Loader from "../components/Loader";
+import PostCard from "../components/PostCard";
+import AddCard from "../components/AddCard";
+import { PostsContext } from "../context/PostsStore";
 
 function EntertainmentPostsPage() {
   const [entertainmentPosts, setEntertainmentPosts] = useState([]);
-  const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null });
-  const [toggleComments, setToggleComments] = useState({
-    toggle: false,
-    index: null,
-  });
+  const [displayedPosts, setDisplayedPosts] = useState(9);
+  const { loadingPosts } = useContext(PostsContext);
 
   useEffect(() => {
     axios
       .get("https://random-news-react-app.adaptable.app/posts/")
       .then((response) => {
-        const array = response.data;
-        console.log(array);
-        const entertainmentArray = array.filter((elm) => {
-          return elm.category === "entertainment";
-        });
-        setEntertainmentPosts(entertainmentArray);
+        let array = [];
+        for (let i = response.data.length - 1; i >= 0; i--) {
+          if (response.data[i].category === "entertainment")
+            array.push(response.data[i]);
+        }
+        setEntertainmentPosts(array);
       })
       .catch((error) => {
         console.log("Cannot filter posts", error);
       });
-  }, []);
+  }, [entertainmentPosts]);
 
-  const handlePostDelete = () => {
-    axios
-      .get(API_URL)
-      .then((response) => {
-        setEntertainmentPosts(response.data);
-      })
-      .catch((error) => error);
+  const handleShowMore = () => {
+    setDisplayedPosts((prev) => prev + 6);
   };
 
   return (
     <>
       <h1>Entertainment Posts</h1>
-      {entertainmentPosts.map((elm, i) => {
-        return (
-          <div key={elm.id}>
-            <h2>{elm.title}</h2>
-            <LikesButtons />
-            <p>{elm.location}</p>
-            <p>{elm.date}</p>
-            <img src={elm.image} />
-
-            <button
-              onClick={() =>
-                toggleEdit.toggle && i !== toggleEdit.index
-                  ? setToggleEdit((prev) => ({
-                      ...prev,
-                      index: i,
-                    }))
-                  : setToggleEdit((prev) => ({
-                      toggle: !prev.toggle,
-                      index: !prev.toggle ? i : null,
-                    }))
-              }
-            >
-              Edit post
-            </button>
-
-            {toggleEdit.toggle && toggleEdit.index === i && (
-              <EditPost post={elm} postId={elm.id} />
-            )}
-
-            <DeletePost postId={elm.id} onDelete={handlePostDelete} />
-            <button
-              onClick={() => {
-                toggleComments.toggle && i !== toggleComments.index
-                  ? setToggleComments((prev) => ({
-                      ...prev,
-                      index: i,
-                    }))
-                  : setToggleComments((prev) => ({
-                      toggle: !prev.toggle,
-                      index: !prev.toggle ? i : null,
-                    }));
-              }}
-            >
-              Show comments
-            </button>
-            {toggleComments.toggle && toggleComments.index == i && (
-              <Comments postID={elm.id} />
-            )}
-          </div>
-        );
-      })}
+      <div className="center">
+        {loadingPosts ? (
+          <Loader />
+        ) : (
+          <section className="all-posts">
+            <AddCard />
+            {entertainmentPosts.slice(0, displayedPosts).map((elm) => {
+              return <PostCard key={elm.id} post={elm} />;
+            })}
+          </section>
+        )}
+      </div>
+      {entertainmentPosts.length > displayedPosts && (
+        <button onClick={handleShowMore} className="showmore-button">
+          SHOW MORE
+        </button>
+      )}
     </>
   );
 }

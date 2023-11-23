@@ -73,8 +73,8 @@ function PostDetailsPage() {
                 <h3 className="article">{postDetails.title}</h3>
                 <p className="article">{postDetails.description}</p>
                 <h6>Category: {postDetails.category}</h6>
-
                 <LikesButtons />
+
 
                 <Button
                   onClick={() => setToggleComments((prev) => !prev)}

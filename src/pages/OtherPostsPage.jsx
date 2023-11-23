@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
-import DeletePost from "../components/DeletePost";
-import EditPost from "../components/EditPost";
-import LikesButtons from "../components/LikesButtons";
-import Comments from "../components/Comments";
+import { useContext, useEffect, useState } from "react";
+import Loader from "../components/Loader";
+import PostCard from "../components/PostCard";
+import AddCard from "../components/AddCard";
+import { PostsContext } from "../context/PostsStore";
 
 function OtherPostsPage() {
   const [otherPosts, setOtherPosts] = useState([]);
