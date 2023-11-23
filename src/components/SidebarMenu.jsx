@@ -3,7 +3,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import HomeIcon from "@mui/icons-material/Home";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import { useState } from "react";
-import { List, ListItem, styled } from "@material-ui/core";
+import { List, ListItem, styled } from "@mui/material";
 import {
   ListItemButton,
   ListItemIcon,
