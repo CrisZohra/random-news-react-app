@@ -1,80 +1,110 @@
-## RANDOM NEWS
+## WHAT NOW?
 
-## MVP:
+<img src="./public/capture1.png" alt="website capture"/>
+<img src="./public/capture2.png" alt="website capture"/>
+<img src="./public/capture3.png" alt="website capture"/>
+
+## DESCRIPTION
+
+What now? is an interactive news portal in which users can write news snippets, edit and delete posts, as well as comment and like them. The site is organised as follows:
+    - a home page with all existing posts
+    - pages with posts filtered by category
+    - detailed pages of individual posts
+    - a Navigation Bar with a menu, search bar and page icon
+    - an about us page
+
+Use our site to stay up to date with the newest events, weather and traffic updates, educational articles and more!
+
+## INSTRUCTIONS 
+
+    - use chips to filter posts by category
+    - use the search bar to filter posts by title or location
+    - toggle comments button to post and see comments
+    - toggle settings button to edit or delete posts
+    - use nav bar and dropdown menu to easily navigate through the page
+    - use the plus sign to post your own news
+    - have fun
+
+## DEMO
+
+https://what-now-portal.netlify.app/
+
+## MVP
 
     [X] API
     [X] APP / MAIN / HOMEPAGE
-    [X] READ: HOMEPAGE (Render the different categories pages)
-    [X] CREATE: ADD POST (Inputs in the form: title, date, location, description, category, image, url) --> Zohra
-    [X] DELETE: REMOVE AN EXISTING POST --> Zohra
-    [X] UPDATE: EDIT EXISTING POST --> Zohra
 
-## CSS
+    CRUD FUNCTIONALITY:
+    [X] READ posts: HOMEPAGE (Render the different categories pages)
+    [X] CREATE posts: Add Post (Inputs in the form: title, date, location, description, category, image, url)
+    [X] DELETE posts: Remove existing posts
+    [X] UPDATE posts: Edit existing posts
 
-    [ ] General style
-    [ ] Give style to components
+    CSS:
+    [X] General style
+    [X] Component style
 
-## IMPROVEMENTS:
-
-    [ ] Search bars to look for posts (ie. by title or loation)
-    [ ] Order posts by date.
-    [ ] Loader / Skeleton.
-    [ ] Responsive.
-    [ ] Delete the posts automatically after x days.
-    [X] Show the 6 first posts and then 'show more' button.
-    [X] When click on button delete: add an overlay with message 'Are you sure you want to remove this post?' Yes, remove it. / Cancel.
+    IMPROVEMENTS:
+    [X] Search bar (to filter posts by title or loation)
+    [X] Loader
+    [X] Responsive behaviour
+    [X] Comments
+    [X] Likes and dislikes for posts
+    [X] Order posts by date
+    [X] Show a specific number of posts + 'show more' button
+    [X] Delete button with overlay message: "Are you sure you want to remove this post?" "Yes, remove it / Cancel"
     [X] Also on edit button.
-    [X] Add prettier config.
-    [ ] Check the scroll down of the page works properly.
-    [x] Likes and dislikes for he posts.
-    [ ] Comments.
+    [X] Add prettier configuration
+    [ ] Proper scroll down of the page
+    [ ] Automatic removal of posts after x days
 
-## CATEGORIES (Pages with each category, )
 
-    - All.
-    - Weather updates.
-    - Selling.
-    - Entertainment.
-    - Events.
-    - Traffic.
-    - Social.
-    - Job offers.
-    - Education.
-    - Other.
+## OTHER
 
-HOMEPAGE will have: --> Zohra [X]
+POSTS CATEGORIES:
+    - All
+    - Weather updates
+    - Selling
+    - Entertainment
+    - Events
+    - Traffic
+    - Social
+    - Job offers
+    - Education
+    - Other
 
-- Component: Navbar. --> Cris [X]
-- Component: AddPost.jsx --> Zohra [X]
+NAVBAR components:
+    - Home
+    - Dropdown menu
+    - About us
+    - Styling
 
-NAVBAR will have: --> Cris (work from here) [X]
+FOOTER component:
+    - Credentials
 
-- Home [X]
-- Dropdown menu with the posts' categories pages [X]
-- About us [X]
-- Style [X]
+HOMEPAGE:
+    - Navbar
+    - Header
+    - Posts
+    - Footer
+    - Styling
 
-ALL POSTS will have: --> Cris. [X]
+CATEGORIES PAGE:
+    - Navbar
+    - Posts filtered by categories
+    - Footer
 
-- All posts (without filter). Each post will show:
-  -- Image. [X]
-  -- Title. [X]
-  -- Location. [X]
-  -- Date. [X]
-  -- Category. [X]
-  -- Button: edit. [X] --> Zohra
-  -- Button: delete. [X] --> Zohra
-- Style [/]
-- Show more button [X]
-
-POST DETAILS will have: --> Cris [X]
-
-- Just one post with all the properties except the id (image, title, description, location, date, image, url and category).
-- Button: edit.
-- Button: delete.
-
-EACH CATEGORY: --> Zohra.
-
-- GET request post with the category of the page.
-
-\*\* EACH PAGE SHOULD HAVE ON TOP SOME SEARCH BARS TO FILTER BY TITLE OR LOCATION (So that the user can type what he/she is looking for and only the posts with those letter will be displayed)
+POST DETAILS PAGE:
+    - Navbar
+    - Title 
+    - Image 
+    - Location 
+    - Date 
+    - Description 
+    - Category
+    - Edit button 
+    - Delete button 
+    - Show more button 
+    - Style 
+    - Toggle comments
+    - Footer

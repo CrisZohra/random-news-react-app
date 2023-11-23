@@ -86,6 +86,7 @@ function AddPost() {
             type="text"
             name="location"
             placeholder="Specify the location"
+            required={true}
             value={location}
             onChange={(e) => {
               setLocation(e.target.value);
@@ -110,6 +111,7 @@ function AddPost() {
           Choose Category:
           <select
             name="category"
+            required={true}
             value={category}
             onChange={(e) => {
               setCategory(e.target.value);
