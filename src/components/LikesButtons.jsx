@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ThumbDownOffAltIcon from "@mui/icons-material/ThumbDownOffAlt";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import IconButton from "@mui/material/IconButton";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const buttonStyles = {
   display: "flex",
@@ -57,7 +57,7 @@ function LikesButtons() {
         sx={buttonStyles}
         onClick={toggleDislikes}
       >
-        <ThumbDownOffAltIcon />
+        <ThumbDownIcon />
         {dislikes}
       </IconButton>
     </div>

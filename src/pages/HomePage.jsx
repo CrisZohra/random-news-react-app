@@ -17,7 +17,6 @@ function HomePage() {
       </section>
       <Chips />
       <AllPosts />
-      <AddPost />
       <Footer />
     </>
   );
