@@ -40,7 +40,7 @@ function SocialPostsPage() {
 
   return (
     <>
-      <h1>Traffic Posts</h1>
+      <h1>Social Posts</h1>
       {socialPosts.map((elm, i) => {
         return (
           <div key={elm.id}>
