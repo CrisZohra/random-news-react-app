@@ -42,30 +42,30 @@ function AllPosts() {
         updatePosts(response.data);
       })
       .catch((error) => error);
-  };
-
-  return (
-    <>
-      <section className="all-posts">
+    };
+    
+    return (
+      <>
+        <div className="center">
         {loadingPosts ? (
           <Loader />
-        ) : (
-          <>
+          ) : (  
+            <section className="all-posts">
             <AddCard />
-
             {posts.slice(0, displayedPosts).map((post) => {
               return <PostCard key={post.id} post={post} />;
             })}
-          </>
+            </section>
+
         )}
-      </section>
+      </div>
 
       {posts.length > displayedPosts && (
         <button onClick={handleShowMore} className="showmore-button">
           SHOW MORE
         </button>
       )}
-    </>
+      </>
   );
 }
 
