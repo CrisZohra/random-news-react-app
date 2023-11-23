@@ -90,7 +90,10 @@ export default function Chips() {
   return (
     <StyledStack direction="row" spacing={3} useFlexGap flexWrap="wrap">
       {chipStyles.map((style, index) => (
-        <StyledNavLink key={index} to={`/posts/${style.label.toLowerCase()}`}>
+        <StyledNavLink
+          key={index}
+          to={`/posts/category/${style.label.toLowerCase()}`}
+        >
           <Chip
             label={style.label}
             color="primary"

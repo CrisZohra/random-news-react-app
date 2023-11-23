@@ -37,15 +37,6 @@ function AllPosts() {
     setDisplayedPosts((prev) => prev + 6);
   };
 
-  const handlePostDelete = () => {
-    axios
-      .get(API_URL)
-      .then((response) => {
-        updatePosts(response.data);
-      })
-      .catch((error) => error);
-  };
-
   return (
     <>
       <div className="center">
@@ -65,7 +56,7 @@ function AllPosts() {
         <Stack
           spacing={2}
           direction="row"
-          sx={{ display: "flex", alignItems: "center" }}
+          sx={{ display: "flex", justifyContent: "center" }}
         >
           <Button
             variant="contained"

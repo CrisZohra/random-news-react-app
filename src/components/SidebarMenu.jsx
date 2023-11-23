@@ -71,7 +71,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/weather");
+                  navigate("/posts/category/weather");
                   setIsOpen(false);
                 }}
               >
@@ -85,7 +85,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/traffic");
+                  navigate("/posts/category/traffic");
                   setIsOpen(false);
                 }}
               >
@@ -99,7 +99,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/education");
+                  navigate("/posts/category/education");
                   setIsOpen(false);
                 }}
               >
@@ -113,7 +113,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/jobs");
+                  navigate("/posts/category/jobs");
                   setIsOpen(false);
                 }}
               >
@@ -127,7 +127,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/selling");
+                  navigate("/posts/category/selling");
                   setIsOpen(false);
                 }}
               >
@@ -141,7 +141,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/entertainment");
+                  navigate("/posts/category/entertainment");
                   setIsOpen(false);
                 }}
               >
@@ -155,7 +155,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/events");
+                  navigate("/posts/category/events");
                   setIsOpen(false);
                 }}
               >
@@ -169,7 +169,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/social");
+                  navigate("/posts/category/social");
                   setIsOpen(false);
                 }}
               >
@@ -183,7 +183,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/posts/other");
+                  navigate("/posts/category/other");
                   setIsOpen(false);
                 }}
               >

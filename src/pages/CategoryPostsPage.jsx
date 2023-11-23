@@ -1,14 +1,15 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import PostCard from "../components/PostCard";
 import AddCard from "../components/AddCard";
-import { PostsContext } from "../context/PostsStore";
+import { useParams } from "react-router-dom";
 
-function WeatherPostsPage() {
-  const [weatherPosts, setWeatherPosts] = useState([]);
+function CategoryPostsPage() {
+  const [categoryPosts, setCategoryPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState(9);
-  const { loadingPosts } = useContext(PostsContext);
+  const { category } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -16,10 +17,11 @@ function WeatherPostsPage() {
       .then((response) => {
         let array = [];
         for (let i = response.data.length - 1; i >= 0; i--) {
-          if (response.data[i].category === "weather")
+          if (response.data[i].category === category)
             array.push(response.data[i]);
         }
-        setWeatherPosts(array);
+        setCategoryPosts(array);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log("Cannot filter posts", error);
@@ -32,20 +34,20 @@ function WeatherPostsPage() {
 
   return (
     <>
-      <h1>Weather Posts</h1>
+      <h1>{category} Posts</h1>
       <div className="center">
-        {loadingPosts ? (
+        {isLoading ? (
           <Loader />
         ) : (
           <section className="all-posts">
             <AddCard />
-            {weatherPosts.slice(0, displayedPosts).map((elm) => {
+            {categoryPosts.slice(0, displayedPosts).map((elm) => {
               return <PostCard key={elm.id} post={elm} />;
             })}
           </section>
         )}
       </div>
-      {weatherPosts.length > displayedPosts && (
+      {categoryPosts.length > displayedPosts && (
         <button onClick={handleShowMore} className="showmore-button">
           SHOW MORE
         </button>
@@ -54,4 +56,4 @@ function WeatherPostsPage() {
   );
 }
 
-export default WeatherPostsPage;
+export default CategoryPostsPage;
