@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
-import Footer from "../components/Footer";
 import LikesButtons from "../components/LikesButtons";
 import Comments from "../components/Comments";
 
@@ -93,7 +92,6 @@ function EntertainmentPostsPage() {
           </div>
         );
       })}
-      <Footer />
     </>
   );
 }

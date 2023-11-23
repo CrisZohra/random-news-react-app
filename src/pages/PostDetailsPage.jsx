@@ -7,17 +7,16 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
-import Footer from "../components/Footer";
 import LikesButtons from "../components/LikesButtons";
 import Comments from "../components/Comments";
-import locationLogo from "/location-icon.png"
+import locationLogo from "/location-icon.png";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function PostDetailsPage() {
   const [postDetails, setPostDetails] = useState("");
   const [fetching, setFeching] = useState(true);
-  const [toggle, setToggle] = useState(false);    
+  const [toggle, setToggle] = useState(false);
   const [toggleComments, setToggleComments] = useState(false);
 
   const { postId } = useParams();
@@ -95,7 +94,7 @@ function PostDetailsPage() {
             )}
 
             <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
-        
+
             <button
               onClick={() => {
                 setToggleComments(!toggleComments);
@@ -103,18 +102,11 @@ function PostDetailsPage() {
             >
               Show comments
             </button>
-            
-            {toggleComments && (
-              <Comments 
-              postID={postDetails.id}
-              />)}
 
-          
-                 
+            {toggleComments && <Comments postID={postDetails.id} />}
           </div>
         )}
       </div>
-      <Footer />
     </>
   );
 }

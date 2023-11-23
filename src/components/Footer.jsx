@@ -1,7 +1,11 @@
+import { Typography } from "@mui/material";
+
 function Footer() {
-    return (
-        <h3>© This page has been made by the CrisZohra Organisation</h3>
-    )
+  return (
+    <Typography>
+      © This page has been made by the CrisZohra Organisation
+    </Typography>
+  );
 }
 
-export default Footer
+export default Footer;
