@@ -15,9 +15,6 @@ function AllPosts() {
     useContext(PostsContext);
   const [displayedPosts, setDisplayedPosts] = useState(6);
 
-  const [toggleEdit, setToggleEdit] = useState({ toggle: false, index: null }); //initial state for toggling
-  const [toggleComments, setToggleComments] = useState({toggle: false, index: null});
-
   useEffect(() => {
     setLoadingPosts(true);
 
