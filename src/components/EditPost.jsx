@@ -91,24 +91,6 @@ function EditPost({ post, onExitEditing }) {
       </label>
       <br />
       <label className="form">
-        Date:
-        <input
-          type="date"
-          name="date"
-          placeholder="Set the date"
-          value={editedPost.date}
-          onChange={(e) => {
-            setEditedPost((prev) => ({
-              ...prev,
-              [e.target.name]: e.target.value,
-            }));
-
-            // setDate(e.target.value);
-          }}
-        />
-      </label>
-      <br />
-      <label className="form">
         Image:
         <input
           type="text"
@@ -124,24 +106,7 @@ function EditPost({ post, onExitEditing }) {
             // setImageURL(e.target.value);
           }}
         />
-      </label>
       <br />
-      <label className="form">
-        URL:
-        <input
-          type="text"
-          name="URL"
-          placeholder="Add a URL"
-          value={editedPost.URL}
-          onChange={(e) => {
-            setEditedPost((prev) => ({
-              ...prev,
-              [e.target.name]: e.target.value,
-            }));
-
-            // setURL(e.target.value);
-          }}
-        />
       </label>
       <br />
       <label className="form">

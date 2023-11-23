@@ -5,22 +5,29 @@ function AddPost() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [location, setLocation] = useState("");
-    const [date, setDate] = useState("");
     const [category, setCategory] = useState("other");
     const [imageURL, setImageURL] = useState("");
-    const [URL, setURL] = useState("");
     
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        const currentDate = new Date();
+        const date = currentDate.getDate();
+        const month = currentDate.getMonth(); 
+        const year = currentDate.getFullYear();
+        
+        function pad(n) {
+          return n<10 ? '0'+n : n;
+        }
+        const ddmmyyyy = pad(date) + "-" + pad(month + 1) + "-" + year;
+
         const requestBody = {
             title,
             description,
             location,
-            date,
+            date: ddmmyyyy,
             category,
             imageURL,
-            URL,
         };
         console.log(requestBody);
         
@@ -32,10 +39,8 @@ function AddPost() {
             setTitle("");
             setDescription("");
             setLocation("");
-            setDate("");
             setCategory("");
             setImageURL("");
-            setURL("");
         })
         .catch((error) => {
             console.log("Error creating new post...");
@@ -89,19 +94,6 @@ function AddPost() {
         </label>
         <br />
         <label className="form">
-          Date:
-          <input
-            type="date"
-            name="date"
-            placeholder="Set the date"
-            value={date}
-            onChange={(e) => {
-                setDate(e.target.value);
-            }}
-            />
-        </label>
-        <br />
-        <label className="form">
           Image:
           <input
             type="text"
@@ -110,19 +102,6 @@ function AddPost() {
             value={imageURL}
             onChange={(e) => {
                 setImageURL(e.target.value);
-            }}
-            />
-        </label>
-        <br />
-        <label className="form">
-          URL:
-          <input
-            type="text"
-            name="URL"
-            placeholder="Add a URL"
-            value={URL}
-            onChange={(e) => {
-                setURL(e.target.value);
             }}
             />
         </label>
