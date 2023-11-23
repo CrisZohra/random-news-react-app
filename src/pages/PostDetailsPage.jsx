@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import DeletePost from "../components/DeletePost";
 import EditPost from "../components/EditPost";
-import Footer from "../components/Footer";
 import LikesButtons from "../components/LikesButtons";
 import Comments from "../components/Comments";
 import locationLogo from "/location-icon.png"
+import { Button, Chip } from "@mui/material";
+import CardMenu from "../components/PostCardMenu";
+import { Typography } from "@mui/material";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
@@ -41,36 +43,41 @@ function PostDetailsPage() {
         setPostDetails(response.data);
       })
       .catch((error) => error);
-  };
-
+    };
+    
   const handleCancelEdit = () => {
     setToggle(false);
   };
-
+  
   return (
-    <div className="post-details-container">
+<div className="details">
+<Typography>
+<CardMenu post={postDetails}/>
+<div className="post-details-container">
       <div className="post-details">
         {fetching ? (
           <Loader />
-        ) : (
-          <div className="details-container">
-            <h1>{postDetails.title}</h1>
+          ) : (
+            <div className="details-container">
+            <div className="location-date">
+            <div className="details-location">
+              <img
+                src={locationLogo}
+                alt="location icon"
+                className="logo"
+                />
+              <p> {postDetails.location} </p>
+            </div>
+            <p>{postDetails.date}</p>
+           </div>
             {postDetails.image && (
               <img
                 src={postDetails.image}
                 alt={`${postDetails.title} photo`}
                 className="details-image"
                 />
-            )}
-            <div className="details-location">
-              <img
-                src={locationLogo}
-                alt="location icon"
-                className="details-location-icon"
-              />
-              <h2> {postDetails.location} </h2>
-            </div>
-            <h2>{postDetails.date}</h2>
+                )}
+                <h1>{postDetails.title}</h1>
             <h3>{postDetails.description}</h3>
             <h3>Category: {postDetails.category}</h3>
 
@@ -79,37 +86,42 @@ function PostDetailsPage() {
               onClick={() => {
                 setToggle(!toggle);
               }}
-            >
+              >
               Edit post
             </button>
 
             {toggle && (
               <EditPost
               post={postDetails}
-                postId={postDetails.id}
+              postId={postDetails.id}
                 onExitEditing={handleCancelEdit}
-              />
+                />
             )}
 
             <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
         
-            <button
-              onClick={() => {
-                setToggleComments(!toggleComments);
-              }}
-            >
-              Show comments
-            </button>
-            
-            {toggleComments && (
-              <Comments 
-              postID={postDetails.id}
-              />)}
+
+            <Button
+          onClick={() => setToggleComments((prev) => !prev)}
+          sx={{
+            color: "#72335b",
+            margin: "5px 0",
+            "&:hover": {
+              color: "#72335b",
+              backgroundColor: "#72335b24",
+            },
+          }}
+        >
+          {`${toggleComments ? "Hide" : "Show"} comments`}
+        </Button>
+        {toggleComments && <Comments postID={postDetails.id} />}
                  
           </div>
         )}
       </div>
     </div>
+              </Typography>
+        </div>
   );
 }
 
