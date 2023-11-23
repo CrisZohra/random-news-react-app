@@ -48,6 +48,7 @@ export default function SidebarMenu() {
         anchor="left"
         open={isOpen}
         onClose={() => setIsOpen(false)}
+        onOpen={() => setIsOpen(true)}
       >
         <Paper sx={{ height: "100%", backgroundColor: "#dea883" }}>
           <StyledLogo src={titlePic} alt="what now? logo" />

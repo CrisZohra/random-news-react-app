@@ -24,7 +24,7 @@ function WeatherPostsPage() {
       .catch((error) => {
         console.log("Cannot filter posts", error);
       });
-  }, [eventsPosts]);
+  }, []);
 
   const handleShowMore = () => {
     setDisplayedPosts((prev) => prev + 6);

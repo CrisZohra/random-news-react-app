@@ -6,6 +6,8 @@ import Loader from "./Loader";
 import { PostsContext } from "../context/PostsStore";
 import PostCard from "./PostCard";
 import AddCard from "./AddCard";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 const API_URL = "https://random-news-react-app.adaptable.app/";
 const POSTS_URL = `${API_URL}posts/`;
@@ -42,30 +44,44 @@ function AllPosts() {
         updatePosts(response.data);
       })
       .catch((error) => error);
-    };
-    
-    return (
-      <>
-        <div className="center">
+  };
+
+  return (
+    <>
+      <div className="center">
         {loadingPosts ? (
           <Loader />
-          ) : (  
-            <section className="all-posts">
+        ) : (
+          <section className="all-posts">
             <AddCard />
             {posts.slice(0, displayedPosts).map((post) => {
               return <PostCard key={post.id} post={post} />;
             })}
-            </section>
-
+          </section>
         )}
       </div>
 
       {posts.length > displayedPosts && (
-        <button onClick={handleShowMore} className="showmore-button">
-          SHOW MORE
-        </button>
+        <Stack
+          spacing={2}
+          direction="row"
+          sx={{ display: "flex", alignItems: "center" }}
+        >
+          <Button
+            variant="contained"
+            onClick={handleShowMore}
+            sx={{
+              backgroundColor: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+              },
+            }}
+          >
+            SHOW MORE
+          </Button>
+        </Stack>
       )}
-      </>
+    </>
   );
 }
 

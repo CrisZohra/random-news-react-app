@@ -1,9 +1,6 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
-import Loader from "../components/Loader";
-import PostCard from "../components/PostCard";
-import AddCard from "../components/AddCard";
-import { PostsContext } from "../context/PostsStore";
+import { useEffect, useState } from "react";
+import LikesButtons from "../components/LikesButtons";
 
 function OtherPostsPage() {
   const [otherPosts, setOtherPosts] = useState([]);
@@ -70,7 +67,6 @@ function OtherPostsPage() {
               <EditPost post={elm} postId={elm.id} />
             )}
 
-            <DeletePost postId={elm.id} onDelete={handlePostDelete} />
             <button
               onClick={() => {
                 toggleComments.toggle && i !== toggleComments.index

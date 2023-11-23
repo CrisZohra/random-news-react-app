@@ -1,3 +1,8 @@
+html,
+body {
+  height: 100%;
+}
+
 #root {
   margin: 0;
   padding: 0;
@@ -10,10 +15,19 @@
     rgba(17, 5, 80, 4) 100%
   );
   color: white;
+  height: 100%;
 }
 
 .app {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .nav-link {
@@ -118,20 +132,6 @@
 .location img {
   height: 30px;
   margin-right: 5px;
-}
-
-.showmore-button {
-  background-color: #190951;
-  color: white;
-  border-radius: 20px;
-  border: 1px solid white;
-  padding: 10px;
-  width: 50%;
-}
-
-.showmore-button:hover {
-  background-color: rgba(255, 255, 255, 0.445);
-  color: #190951;
 }
 
 .button-container {
@@ -260,7 +260,7 @@
 
 .post-details-container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
 }
 
 .post-details {
@@ -274,12 +274,12 @@
 .details-image {
   width: 100%;
   height: 100%;
-  border: 1px solid #190951
+  border: 1px solid #190951;
 }
 
 .details {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   color: black;
 }
 
@@ -299,7 +299,6 @@
 .logo {
   width: fit-content;
   height: fit-content;
-;
 }
 
 .article {
