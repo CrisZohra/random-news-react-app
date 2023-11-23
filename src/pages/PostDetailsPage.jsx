@@ -48,20 +48,19 @@ function PostDetailsPage() {
   };
 
   return (
-    <>
+    <div className="post-details-container">
       <div className="post-details">
         {fetching ? (
           <Loader />
         ) : (
           <div className="details-container">
-            <LikesButtons />
             <h1>{postDetails.title}</h1>
             {postDetails.image && (
               <img
                 src={postDetails.image}
                 alt={`${postDetails.title} photo`}
                 className="details-image"
-              />
+                />
             )}
             <div className="details-location">
               <img
@@ -73,11 +72,9 @@ function PostDetailsPage() {
             </div>
             <h2>{postDetails.date}</h2>
             <h3>{postDetails.description}</h3>
-            <NavLink to={`${postDetails.url}`} target="_blank">
-              Click here for more details.
-            </NavLink>
             <h3>Category: {postDetails.category}</h3>
 
+            <LikesButtons />
             <button
               onClick={() => {
                 setToggle(!toggle);
@@ -88,7 +85,7 @@ function PostDetailsPage() {
 
             {toggle && (
               <EditPost
-                post={postDetails}
+              post={postDetails}
                 postId={postDetails.id}
                 onExitEditing={handleCancelEdit}
               />
@@ -108,14 +105,11 @@ function PostDetailsPage() {
               <Comments 
               postID={postDetails.id}
               />)}
-
-          
                  
           </div>
         )}
       </div>
-      <Footer />
-    </>
+    </div>
   );
 }
 
