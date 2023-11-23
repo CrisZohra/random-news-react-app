@@ -308,3 +308,19 @@
   display: flex;
   justify-content: center;
 }
+
+.post-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.comments-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer {
+  margin: 20px;
+}

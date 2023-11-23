@@ -73,9 +73,8 @@ function PostDetailsPage() {
                 <h3 className="article">{postDetails.title}</h3>
                 <p className="article">{postDetails.description}</p>
                 <h6>Category: {postDetails.category}</h6>
-                <LikesButtons />
-
-
+                <div className="post-bottom">
+                  <div className="comments-container">
                 <Button
                   onClick={() => setToggleComments((prev) => !prev)}
                   sx={{
@@ -86,11 +85,14 @@ function PostDetailsPage() {
                       backgroundColor: "#72335b24",
                     },
                   }}
-                >
+                  >
                   {`${toggleComments ? "Hide" : "Show"} comments`}
                 </Button>
                 {toggleComments && <Comments postID={postDetails.id} />}
                 <hr className="hr" />
+                  </div>
+                  <LikesButtons />
+                  </div>
               </div>
           </div>
             )}
