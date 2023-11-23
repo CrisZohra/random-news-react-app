@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./index.css";
-
 import Navbar from "./components/Navbar";
-
 import HomePage from "./pages/HomePage";
 import PostDetailsPage from "./pages/PostDetailsPage";
 import WeatherPostsPage from "./pages/WeatherPostsPage";
@@ -17,33 +15,33 @@ import OtherPostsPage from "./pages/OtherPostsPage";
 import AboutUs from "./pages/AboutUs";
 import PostsStore from "./context/PostsStore";
 import Footer from "./components/Footer";
-
 function App() {
   return (
     <PostsStore>
-      <div className="App">
+      <div className="app">
         <Navbar />
-
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/posts/:postId" element={<PostDetailsPage />} />
-          <Route path="/posts/weather" element={<WeatherPostsPage />} />
-          <Route path="/posts/traffic" element={<TrafficPostsPage />} />
-          <Route path="/posts/education" element={<EducationPostsPage />} />
-          <Route path="/posts/jobs" element={<JobsPostsPage />} />
-          <Route path="/posts/selling" element={<SellingPostsPage />} />
-          <Route
-            path="/posts/entertainment"
-            element={<EntertainmentPostsPage />}
-          />
-          <Route path="/posts/events" element={<EventsPostsPage />} />
-          <Route path="/posts/social" element={<SocialPostsPage />} />
-          <Route path="/posts/other" element={<OtherPostsPage />} />
-          <Route path="/about-us" element={<AboutUs />} />
-        </Routes>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/posts/:postId" element={<PostDetailsPage />} />
+            <Route path="/posts/weather" element={<WeatherPostsPage />} />
+            <Route path="/posts/traffic" element={<TrafficPostsPage />} />
+            <Route path="/posts/education" element={<EducationPostsPage />} />
+            <Route path="/posts/jobs" element={<JobsPostsPage />} />
+            <Route path="/posts/selling" element={<SellingPostsPage />} />
+            <Route
+              path="/posts/entertainment"
+              element={<EntertainmentPostsPage />}
+            />
+            <Route path="/posts/events" element={<EventsPostsPage />} />
+            <Route path="/posts/social" element={<SocialPostsPage />} />
+            <Route path="/posts/other" element={<OtherPostsPage />} />
+            <Route path="/about-us" element={<AboutUs />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
     </PostsStore>
   );
 }
-
 export default App;

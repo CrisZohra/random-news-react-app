@@ -7,18 +7,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import FilterPosts from "./FilterPosts";
 import { styled } from "@mui/material/styles";
 import { NavLink } from "react-router-dom";
-import icon from "/icon1.png"
-
+import icon from "/icon1.png";
 const StyledLogo = styled("img")(() => ({
   height: "80px",
 }));
 const StyledNavLink = styled(NavLink)(() => ({
   margin: "0 auto",
 }));
-
 export default function Navbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box
+      sx={{
+        position: "sticky",
+        top: 0,
+        zIndex: 10,
+      }}
+    >
       <AppBar position="static" sx={{ backgroundColor: "#1c0b52" }}>
         <Toolbar>
           <IconButton
@@ -30,11 +34,9 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-
           <StyledNavLink to="/">
             <StyledLogo src={icon} alt="what now? icon" />
           </StyledNavLink>
-
           <FilterPosts />
         </Toolbar>
       </AppBar>
