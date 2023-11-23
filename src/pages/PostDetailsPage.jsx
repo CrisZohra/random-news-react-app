@@ -18,8 +18,7 @@ const API_URL = "https://random-news-react-app.adaptable.app/posts";
 
 function PostDetailsPage() {
   const [postDetails, setPostDetails] = useState("");
-  const [fetching, setFeching] = useState(true);
-  const [toggle, setToggle] = useState(false);    
+  const [fetching, setFeching] = useState(true); 
   const [toggleComments, setToggleComments] = useState(false);
 
   const { postId } = useParams();
@@ -34,7 +33,7 @@ function PostDetailsPage() {
       .catch((error) => {
         console.log(error);
       });
-  }, [postId]);
+  }, [postId, postDetails]);
 
   const handlePostDelete = () => {
     axios
@@ -45,10 +44,6 @@ function PostDetailsPage() {
       .catch((error) => error);
     };
     
-  const handleCancelEdit = () => {
-    setToggle(false);
-  };
-  
   return (
 <div className="details">
 <Typography>
@@ -77,35 +72,17 @@ function PostDetailsPage() {
                 className="details-image"
                 />
                 )}
-                <h1>{postDetails.title}</h1>
-            <h3>{postDetails.description}</h3>
-            <h3>Category: {postDetails.category}</h3>
+                <h3 className="article">{postDetails.title}</h3>
+            <p className="article">{postDetails.description}</p>
+            <h6>Category: {postDetails.category}</h6>
 
-            <LikesButtons />
-            <button
-              onClick={() => {
-                setToggle(!toggle);
-              }}
-              >
-              Edit post
-            </button>
+            <LikesButtons/>
 
-            {toggle && (
-              <EditPost
-              post={postDetails}
-              postId={postDetails.id}
-                onExitEditing={handleCancelEdit}
-                />
-            )}
-
-            <DeletePost postId={postDetails.id} onDelete={handlePostDelete} />
-        
-
-            <Button
+            <Button 
           onClick={() => setToggleComments((prev) => !prev)}
           sx={{
             color: "#72335b",
-            margin: "5px 0",
+            margin: "10px",
             "&:hover": {
               color: "#72335b",
               backgroundColor: "#72335b24",
@@ -115,7 +92,7 @@ function PostDetailsPage() {
           {`${toggleComments ? "Hide" : "Show"} comments`}
         </Button>
         {toggleComments && <Comments postID={postDetails.id} />}
-                 
+                 <hr className="hr"/>
           </div>
         )}
       </div>

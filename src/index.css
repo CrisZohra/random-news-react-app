@@ -265,7 +265,7 @@
 
 .post-details {
   background-color: white;
-  width: 60%;
+  width: 70%;
   border: 1px solid #190951;
   justify-content: center;
   border-radius: 10px;
@@ -279,8 +279,7 @@
 
 .details {
   display: flex;
-  flex-wrap: wrap;
-  justify-content:right;
+  justify-content:center;
   color: black;
 }
 
@@ -301,4 +300,12 @@
   width: fit-content;
   height: fit-content;
 ;
+}
+
+.article {
+  margin: 15px;
+}
+
+.hr {
+  color: transparent;
 }

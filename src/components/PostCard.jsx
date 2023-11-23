@@ -118,7 +118,7 @@ export default function PostCard({ post }) {
         {toggleComments && <Comments postID={post.id} />}
       </CardContent>
       <CardActions disableSpacing>
-        <LikesButtons />
+        <LikesButtons className="likesDislikesButton"/>
 
         {chipStyle !== undefined ? (
           <Chip

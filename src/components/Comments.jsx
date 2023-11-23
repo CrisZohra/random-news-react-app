@@ -62,19 +62,19 @@ function AddComment(props) {
       </div>
       {comments.map((elm) => {
         return (
-          <div style={{ padding: 14 }} >
+          <div style={{ padding: 10}} >
 
-          <Paper style={{ padding: "20px 10px" }}>
-            <Grid container wrap="nowrap" spacing={2}>
+          <Paper style={{ padding: "10px 5px" }}>
+            <Grid container wrap="nowrap" spacing={1}>
             <Grid item>
       <Avatar alt="anonymous" src={avatar} />
     </Grid>
               <Grid justifyContent="left" item xs zeroMinWidth>
                 <p style={{ textAlign: "left" }}>
-                  <p key={elm.id}>{elm.message}</p>{" "}
+                  <p key={elm.id}>{elm.message}</p>
                 </p>
                 <p style={{ textAlign: "left", color: "gray" }}>
-                  posted 1 minute ago
+                  posted recently
                 </p>
               </Grid>
             </Grid>
