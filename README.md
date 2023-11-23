@@ -2,16 +2,16 @@
 
 <img src="./public/capture1.png" alt="website capture"/>
 <img src="./public/capture2.png" alt="website capture"/>
-<img src="./public/capture3.png" alt="website capture"/>
 
 ## DESCRIPTION
 
 What now? is an interactive news portal in which users can write news snippets, edit and delete posts, as well as comment and like them. The site is organised as follows:
-    - a home page with all existing posts
-    - pages with posts filtered by category
-    - detailed pages of individual posts
-    - a Navigation Bar with a menu, search bar and page icon
-    - an about us page
+
+- a home page with all existing posts
+- pages with posts filtered by category
+- detailed pages of individual posts
+- a Navigation Bar with a menu, search bar and page icon
+- an about us page
 
 Use our site to stay up to date with the newest events, weather and traffic updates, educational articles and more!
 
@@ -36,7 +36,7 @@ https://what-now-portal.netlify.app/
 
     CRUD FUNCTIONALITY:
     [X] READ posts: HOMEPAGE (Render the different categories pages)
-    [X] CREATE posts: Add Post (Inputs in the form: title, date, location, description, category, image, url)
+    [X] CREATE posts: Add Post (Inputs in the form: title, date, location, description, category, image)
     [X] DELETE posts: Remove existing posts
     [X] UPDATE posts: Edit existing posts
 
@@ -52,7 +52,7 @@ https://what-now-portal.netlify.app/
     [X] Likes and dislikes for posts
     [X] Order posts by date
     [X] Show a specific number of posts + 'show more' button
-    [X] Delete button with overlay message: "Are you sure you want to remove this post?" "Yes, remove it / Cancel"
+    [X] Delete button with overlay message: "Are you sure you want to remove this post?" "Yes / No"
     [X] Also on edit button.
     [X] Add prettier configuration
     [ ] Proper scroll down of the page
@@ -62,49 +62,51 @@ https://what-now-portal.netlify.app/
 ## OTHER
 
 POSTS CATEGORIES:
-    - All
-    - Weather updates
-    - Selling
-    - Entertainment
-    - Events
-    - Traffic
-    - Social
-    - Job offers
-    - Education
-    - Other
+- All
+- Weather updates
+- Selling
+- Entertainment
+- Events
+- Traffic
+- Social
+- Job offers
+- Education
+- Other
 
 NAVBAR components:
-    - Home
-    - Dropdown menu
-    - About us
-    - Styling
+- Home
+- Dropdown menu
+- About us
+- Styling
 
 FOOTER component:
-    - Credentials
+- Credentials
 
 HOMEPAGE:
-    - Navbar
-    - Header
-    - Posts
-    - Footer
-    - Styling
+- Navbar
+- Header
+- Posts
+- Footer
+- Styling
 
 CATEGORIES PAGE:
-    - Navbar
-    - Posts filtered by categories
-    - Footer
+- Navbar
+- Posts filtered by categories
+- Footer
 
 POST DETAILS PAGE:
-    - Navbar
-    - Title 
-    - Image 
-    - Location 
-    - Date 
-    - Description 
-    - Category
-    - Edit button 
-    - Delete button 
-    - Show more button 
-    - Style 
-    - Toggle comments
-    - Footer
+- Navbar
+- Title 
+- Image 
+- Location 
+- Date 
+- Description 
+- Category
+- Edit button 
+- Delete button 
+- Show more button 
+- Style 
+- Toggle comments
+- Footer
+
+<img src="./public/capture3.png" alt="website capture"/>
