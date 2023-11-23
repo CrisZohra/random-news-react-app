@@ -29,6 +29,11 @@ const StyledNavLink = styled(NavLink)`
   }
 `;
 
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString("en-US", options);
+};
+
 const TruncateEllipsisTypography = styled(Typography)(({ numberOfLines }) => ({
   display: "-webkit-box",
   WebkitLineClamp: numberOfLines || 1,
@@ -37,6 +42,14 @@ const TruncateEllipsisTypography = styled(Typography)(({ numberOfLines }) => ({
   textOverflow: "ellipsis",
   whiteSpace: "normal",
 }));
+
+const FormattedDateTypography = ({ date }) => {
+  const formattedDate = formatDate(date);
+
+  return (
+    <TruncateEllipsisTypography>{formattedDate}</TruncateEllipsisTypography>
+  );
+};
 
 export default function PostCard({ post }) {
   const chipStyle = chipStyles.find(
@@ -75,6 +88,8 @@ export default function PostCard({ post }) {
           alt={post.title}
         />
       </NavLink>
+
+      <FormattedDateTypography date={post.date} />
 
       <CardContent>
         <StyledNavLink to={`/posts/${post.id}`}>

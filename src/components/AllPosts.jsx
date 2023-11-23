@@ -13,7 +13,7 @@ const POSTS_URL = `${API_URL}posts/`;
 function AllPosts() {
   const { posts, updatePosts, setLoadingPosts, loadingPosts } =
     useContext(PostsContext);
-  const [displayedPosts, setDisplayedPosts] = useState(6);
+  const [displayedPosts, setDisplayedPosts] = useState(9);
 
   useEffect(() => {
     setLoadingPosts(true);
@@ -21,11 +21,11 @@ function AllPosts() {
     axios
       .get(POSTS_URL)
       .then((response) => {
-        let array = []
-        for (let i = response.data.length -1; i>=0; i--) {
-         array.push(response.data[i])
-          }
-         updatePosts(array);
+        let array = [];
+        for (let i = response.data.length - 1; i >= 0; i--) {
+          array.push(response.data[i]);
+        }
+        updatePosts(array);
         setLoadingPosts(false);
       })
       .catch((error) => error);
@@ -45,25 +45,27 @@ function AllPosts() {
   };
 
   return (
-    <section className="all-posts">
-      {loadingPosts ? (
-        <Loader />
-      ) : (
-        <>
-          <AddCard />
+    <>
+      <section className="all-posts">
+        {loadingPosts ? (
+          <Loader />
+        ) : (
+          <>
+            <AddCard />
 
-          {posts.slice(0, displayedPosts).map((post) => {
-            return <PostCard key={post.id} post={post} />;
-          })}
+            {posts.slice(0, displayedPosts).map((post) => {
+              return <PostCard key={post.id} post={post} />;
+            })}
+          </>
+        )}
+      </section>
 
-          {posts.length > displayedPosts && (
-            <button onClick={handleShowMore} className="showmore-button">
-              SHOW MORE
-            </button>
-          )}
-        </>
+      {posts.length > displayedPosts && (
+        <button onClick={handleShowMore} className="showmore-button">
+          SHOW MORE
+        </button>
       )}
-    </section>
+    </>
   );
 }
 
