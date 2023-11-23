@@ -6,7 +6,6 @@ import DialogContent from "@mui/material/DialogContent";
 import { DialogContentText, DialogTitle } from "@mui/material";
 import axios from "axios";
 import { PostsContext } from "../context/PostsStore";
-import AddIcon from "@mui/icons-material/Add";
 import Plus from "/plusicon.png";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
@@ -158,24 +157,7 @@ export default function AddPostFormDialog({ onClose }) {
                   }}
                 />
               </label>
-              <br />
-              <label className="form">
-                URL:
-                <input
-                  type="text"
-                  name="URL"
-                  placeholder="Add a URL"
-                  value={newPost.URL}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
 
-                    // setURL(e.target.value);
-                  }}
-                />
-              </label>
               <br />
               <label className="form">
                 Choose Category:
