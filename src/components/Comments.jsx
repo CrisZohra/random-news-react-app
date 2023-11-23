@@ -9,26 +9,18 @@ function AddComment(props) {
   const [comments, setComments] = useState([]);
   const [commentMessage, setCommentMessage] = useState("");
 
-  useEffect(() => {
-    axios
-      .get(API_URL)
-      .then((response) => {
-        setComments(response.data.comments);
-      })
-      .catch((error) => error);
-  }, []);
-
+  
   function handleSubmit(e) {
     e.preventDefault();
 
     console.log("form submitted");
     console.log(commentMessage);
-
+    
     const requestBody = {
       postId: props.postID,
       message: commentMessage,
     };
-
+    
     axios
       .post("https://random-news-react-app.adaptable.app/comments", requestBody)
 
@@ -42,7 +34,21 @@ function AddComment(props) {
         console.log("Error creating new comment...");
         console.log(error);
       });
-  }
+    }
+    
+    useEffect(() => {
+      axios
+      .get(API_URL)
+      .then((response) => {
+        setComments(response.data.comments);
+      })
+      .catch((error) => error);
+    }, []);
+
+    let array = [];
+    for (let i = comments.length - 1; i >= 0; i--) {
+      array.push(comments[i]);
+    }
 
   return (
     <>
@@ -60,7 +66,7 @@ function AddComment(props) {
           <button type="submit">Submit</button>
         </form>
       </div>
-      {comments.map((elm) => {
+      {array.map((elm) => {
         return (
           <div style={{ padding: 10 }}>
             <Paper style={{ padding: "10px 5px" }}>
