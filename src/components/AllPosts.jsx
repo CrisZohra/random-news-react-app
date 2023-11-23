@@ -21,7 +21,11 @@ function AllPosts() {
     axios
       .get(POSTS_URL)
       .then((response) => {
-        updatePosts(response.data);
+        let array = []
+        for (let i = response.data.length -1; i>=0; i--) {
+         array.push(response.data[i])
+          }
+         updatePosts(array);
         setLoadingPosts(false);
       })
       .catch((error) => error);
