@@ -6,7 +6,6 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { red } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 import { useState } from "react";
 import CardMenu from "./PostCardMenu";
@@ -16,9 +15,27 @@ import icon from "/icon1.png";
 import locationLogo from "/location-icon.png";
 import { NavLink } from "react-router-dom";
 import Comments from "./Comments";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const LocationLogo = styled("img")(() => ({
   height: "25px",
+}));
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
+
+const TruncateEllipsisTypography = styled(Typography)(({ numberOfLines }) => ({
+  display: "-webkit-box",
+  WebkitLineClamp: numberOfLines || 1,
+  WebkitBoxOrient: "vertical",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "normal",
 }));
 
 export default function PostCard({ post }) {
@@ -28,17 +45,15 @@ export default function PostCard({ post }) {
   const [toggleComments, setToggleComments] = useState(false);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, display: "flex", flexDirection: "column" }}>
       <CardHeader
-        avatar={
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            WN
-          </Avatar>
-        }
+        avatar={<AccountCircleIcon sx={{ fontSize: "40px" }} />}
         action={<CardMenu post={post} />}
-        title={post.title}
+        title={
+          <TruncateEllipsisTypography>{post.title}</TruncateEllipsisTypography>
+        }
         subheader={
-          <Typography
+          <TruncateEllipsisTypography
             variant="body2"
             color="text.secondary"
             sx={{
@@ -49,7 +64,7 @@ export default function PostCard({ post }) {
           >
             <LocationLogo src={locationLogo} alt="location icon" />
             {post.location}
-          </Typography>
+          </TruncateEllipsisTypography>
         }
       />
       <NavLink to={`/posts/${post.id}`}>
@@ -60,20 +75,17 @@ export default function PostCard({ post }) {
           alt={post.title}
         />
       </NavLink>
+
       <CardContent>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            whiteSpace: "nowrap",
-          }}
-        >
-          {post.description}
-        </Typography>
+        <StyledNavLink to={`/posts/${post.id}`}>
+          <TruncateEllipsisTypography
+            variant="body2"
+            color="text.secondary"
+            numberOfLines={2}
+          >
+            {post.description}
+          </TruncateEllipsisTypography>
+        </StyledNavLink>
 
         <Button
           onClick={() => setToggleComments((prev) => !prev)}
@@ -93,19 +105,21 @@ export default function PostCard({ post }) {
       <CardActions disableSpacing>
         <LikesButtons />
 
-        <Chip
-          label={chipStyle.label}
-          color="primary"
-          variant="filled"
-          icon={chipStyle.icon}
-          style={{
-            backgroundColor: chipStyle.backgroundColor,
-            color: chipStyle.color,
-            fontSize: "12px",
-            fontFamily: "monospace",
-            marginLeft: "auto",
-          }}
-        />
+        {chipStyle !== undefined ? (
+          <Chip
+            label={chipStyle.label}
+            color="primary"
+            variant="filled"
+            icon={chipStyle.icon}
+            style={{
+              backgroundColor: chipStyle.backgroundColor,
+              color: chipStyle.color,
+              fontSize: "12px",
+              fontFamily: "monospace",
+              marginLeft: "auto",
+            }}
+          />
+        ) : null}
       </CardActions>
     </Card>
   );
