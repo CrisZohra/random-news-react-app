@@ -16,6 +16,7 @@ import SocialPostsPage from "./pages/SocialPostsPage";
 import OtherPostsPage from "./pages/OtherPostsPage";
 import AboutUs from "./pages/AboutUs";
 import PostsStore from "./context/PostsStore";
+import Footer from "./components/Footer";
 
 function App() {
   return (

@@ -17,6 +17,10 @@
   margin-right: 150px;
 }
 
+.NavLink {
+  text-decoration: none !important;
+}
+
 .form {
   margin: 20px;
 }
@@ -64,11 +68,10 @@
 
 .all-posts {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 40px;
-  padding: 40px;
-  max-height: 100vh;
-  overflow-y: auto;
+  padding: 50px 100px;
+  max-height: 100%;
 }
 
 .all-posts h1 {
@@ -149,6 +152,7 @@
   color: #fff9e9;
 }
 
+/* Small screens */
 @media (max-width: 576px) {
   .homepage-header {
     display: flex;
@@ -172,8 +176,14 @@
   div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
     margin: 0;
   }
+
+  .all-posts {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 50px 50px;
+  }
 }
 
+/* Medium screens */
 @media (min-width: 577px) and (max-width: 992px) {
   .homepage-header {
     display: flex;
@@ -199,9 +209,14 @@
   div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
     margin: 4px;
   }
+
+  .all-posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-@media (min-width: 993px) and (max-width: 1200px) {
+/* Desktop screens  */
+@media (min-width: 993px) and (max-width: 1024px) {
   .homepage-header {
     display: flex;
     flex-direction: row;
@@ -225,5 +240,16 @@
 
   div.css-1heabyg-MuiStack-root > :not(style) ~ :not(style) {
     margin: 4px;
+  }
+
+  .all-posts {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large screen */
+@media (min-width: 1025px) and (max-width: 1440px) {
+  .all-posts {
+    grid-template-columns: repeat(4, 1fr);
   }
 }

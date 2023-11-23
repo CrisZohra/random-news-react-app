@@ -30,7 +30,6 @@ export default function AddPostFormDialog({ onClose }) {
 
   const handleClose = () => {
     setOpen(false);
-    onClose();
   };
 
   const handleConfirmEdit = () => {

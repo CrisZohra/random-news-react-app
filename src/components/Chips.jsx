@@ -11,6 +11,15 @@ import TagFacesIcon from "@mui/icons-material/TagFaces";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import AllInclusiveIcon from "@mui/icons-material/AllInclusive";
+import { styled } from "@mui/system";
+
+const StyledNavLink = styled(NavLink)`
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+`;
 
 export const chipStyles = [
   {
@@ -69,19 +78,19 @@ export const chipStyles = [
   },
 ];
 
+const StyledStack = styled(Stack)`
+  margin: 0 35px;
+
+  @media (min-width: 576px) {
+    margin: 0 120px;
+  }
+`;
+
 export default function Chips() {
   return (
-    <Stack
-      direction="row"
-      spacing={3}
-      useFlexGap
-      flexWrap="wrap"
-      sx={{
-        margin: "0 50px",
-      }}
-    >
+    <StyledStack direction="row" spacing={3} useFlexGap flexWrap="wrap">
       {chipStyles.map((style, index) => (
-        <NavLink key={index} to={`/posts/${style.label.toLowerCase()}`}>
+        <StyledNavLink key={index} to={`/posts/${style.label.toLowerCase()}`}>
           <Chip
             label={style.label}
             color="primary"
@@ -94,8 +103,8 @@ export default function Chips() {
               fontFamily: "monospace",
             }}
           />
-        </NavLink>
+        </StyledNavLink>
       ))}
-    </Stack>
+    </StyledStack>
   );
 }
