@@ -7,26 +7,30 @@ import AboutUs from "./pages/AboutUs";
 import CategoryPostsPage from "./pages/CategoryPostsPage";
 import HomePage from "./pages/HomePage";
 import PostDetailsPage from "./pages/PostDetailsPage";
+import Title from "./components/Title";
 
 function App() {
   return (
-    <PostsStore>
-      <div className="app">
-        <Navbar />
-        <div className="content">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/posts/:postId" element={<PostDetailsPage />} />
-            <Route
-              path="/posts/category/:category"
-              element={<CategoryPostsPage />}
-            />
-            <Route path="/about-us" element={<AboutUs />} />
-          </Routes>
+    <>
+      <Title />
+      <PostsStore>
+        <div className="app">
+          <Navbar />
+          <div className="content">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/posts/:postId" element={<PostDetailsPage />} />
+              <Route
+                path="/posts/category/:category"
+                element={<CategoryPostsPage />}
+              />
+              <Route path="/about-us" element={<AboutUs />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </PostsStore>
+      </PostsStore>
+    </>
   );
 }
 export default App;

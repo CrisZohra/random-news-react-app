@@ -5,6 +5,13 @@ import PostCard from "../components/PostCard";
 import AddCard from "../components/AddCard";
 import { useParams } from "react-router-dom";
 
+function capitalize(str) {
+  if (typeof str !== "string") {
+    return str;
+  }
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function CategoryPostsPage() {
   const [categoryPosts, setCategoryPosts] = useState([]);
   const [displayedPosts, setDisplayedPosts] = useState(9);
@@ -34,7 +41,7 @@ function CategoryPostsPage() {
 
   return (
     <>
-      <h1>{category} Posts</h1>
+      <h1>{capitalize(category)} Posts</h1>
       <div className="center">
         {isLoading ? (
           <Loader />
