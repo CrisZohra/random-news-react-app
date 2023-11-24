@@ -2,10 +2,14 @@ import { Typography } from "@mui/material";
 
 function Footer() {
   return (
-    <Typography>
-      <p className="footer">
-      © This page has been made by the CrisZohra Organisation
-      </p>
+    <Typography className="footer">
+      <hr />
+      <p className="footer">© ZoCris CodeCraft | 2023</p>
+      <img
+        src="org2.png"
+        alt="ZoCri CodeCraft organisation logo"
+        className="organisation-logo"
+      />
     </Typography>
   );
 }

@@ -151,6 +151,51 @@
   color: #fff9e9;
 }
 
+.about-page {
+  margin: 0 80px;
+}
+
+.about-page img {
+  padding: 10px 50px;
+}
+
+.about-whatnow {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-us {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-whatnow-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  padding: 30px;
+}
+
+.about-us-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  padding: 30px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.organisation-logo {
+  height: 100px;
+}
+
 /* Small screens */
 @media (max-width: 576px) {
   .homepage-header {
