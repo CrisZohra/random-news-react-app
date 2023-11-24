@@ -34,7 +34,7 @@ function CategoryPostsPage() {
       .catch((error) => {
         console.log("Cannot filter posts", error);
       });
-  }, []);
+  }, [category]);
 
   const handleShowMore = () => {
     setDisplayedPosts((prev) => prev + 6);

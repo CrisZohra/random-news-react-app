@@ -51,7 +51,14 @@ export default function SidebarMenu() {
         onClose={() => setIsOpen(false)}
         onOpen={() => setIsOpen(true)}
       >
-        <Paper sx={{ height: "100%", backgroundColor: "#dea883" }}>
+        <Paper
+          sx={{
+            height: "100%",
+            backgroundColor: "#dea883",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <StyledLogo src={titlePic} alt="what now? logo" />
 
           <List>
@@ -217,7 +224,6 @@ export default function SidebarMenu() {
               flexDirection: "column",
               justifyContent: "flex-end",
               alignItems: "center",
-              height: "28%",
             }}
           >
             <NavLink to="/about">

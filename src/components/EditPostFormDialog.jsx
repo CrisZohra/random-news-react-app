@@ -7,6 +7,7 @@ import {
   Select,
   TextField,
   styled,
+  Alert,
 } from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -15,6 +16,7 @@ import DialogContent from "@mui/material/DialogContent";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { PostsContext } from "../context/PostsStore";
+
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 const StyledForm = styled("form")`
   padding: 40px;
@@ -25,18 +27,25 @@ const StyledForm = styled("form")`
     width: 500px;
   }
 `;
+
 export default function EditPostFormDialog({ post, onClose }) {
   const [open, setOpen] = useState(false);
   const [editedPost, setEditedPost] = useState(post);
   const [confirm, setConfirm] = useState(false);
+  const [isValid, setIsValid] = useState(true);
   const { posts, updatePosts } = useContext(PostsContext);
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
     onClose();
+    setConfirm(false);
+    setIsValid(true);
+    setEditedPost(post);
   };
+
   const handleConfirmEdit = () => {
     axios
       .put(`${API_URL}/${post.id}`, editedPost)
@@ -53,10 +62,21 @@ export default function EditPostFormDialog({ post, onClose }) {
         console.log(error);
       });
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setConfirm(true);
+    if (
+      editedPost.title === "" ||
+      editedPost.description === "" ||
+      editedPost.category === ""
+    ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setConfirm(true);
+    }
   };
+
   return (
     <>
       <MenuItem onClick={handleClickOpen}>Edit</MenuItem>
@@ -65,6 +85,17 @@ export default function EditPostFormDialog({ post, onClose }) {
         <DialogContent>
           {!confirm ? (
             <StyledForm>
+              {!isValid ? (
+                <Alert severity="error">
+                  The following fields are required:
+                  <ul>
+                    <li>Title</li>
+                    <li>Description</li>
+                    <li>Category</li>
+                  </ul>
+                </Alert>
+              ) : null}
+
               <TextField
                 label="Title"
                 id="title"
