@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import FilterPosts from "./FilterPosts";
 import { styled } from "@mui/material/styles";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import icon from "/icon1.png";
 import SidebarMenu from "./SidebarMenu";
 
@@ -17,6 +17,7 @@ const StyledNavLink = styled(NavLink)(() => ({
 }));
 
 export default function Navbar() {
+  const location = useLocation();
   return (
     <Box
       sx={{
@@ -28,11 +29,10 @@ export default function Navbar() {
       <AppBar position="static" sx={{ backgroundColor: "#1c0b52" }}>
         <Toolbar>
           <SidebarMenu />
-
           <StyledNavLink to="/">
             <StyledLogo src={icon} alt="what now? icon" />
           </StyledNavLink>
-          <FilterPosts />
+          {location.pathname === "/" ? <FilterPosts /> : null}
         </Toolbar>
       </AppBar>
     </Box>

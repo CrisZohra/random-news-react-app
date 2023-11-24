@@ -10,8 +10,9 @@ import {
   ListItemText,
   SwipeableDrawer,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import titlePic from "/title4.png";
+import organisationPic from "/org2.png";
 import Paper from "@mui/material/Paper";
 import WbSunnyIcon from "@mui/icons-material/WbSunny";
 import DirectionsIcon from "@mui/icons-material/Directions";
@@ -208,6 +209,27 @@ export default function SidebarMenu() {
               </ListItemButton>
             </ListItem>
           </List>
+
+          <div
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              height: "28%",
+            }}
+          >
+            <NavLink to="/about">
+              <StyledLogo
+                src={organisationPic}
+                alt="ZoCris Organisation logo"
+                sx={{
+                  width: "80px",
+                }}
+              />
+            </NavLink>
+          </div>
         </Paper>
       </SwipeableDrawer>
     </>

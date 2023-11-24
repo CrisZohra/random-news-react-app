@@ -24,7 +24,7 @@ function App() {
                 path="/posts/category/:category"
                 element={<CategoryPostsPage />}
               />
-              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/about" element={<AboutUs />} />
             </Routes>
           </div>
           <Footer />
