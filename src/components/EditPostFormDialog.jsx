@@ -169,7 +169,18 @@ export default function EditPostFormDialog({ post, onClose }) {
           )}
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button
+            variant="outlined"
+            onClick={handleClose}
+            sx={{
+              color: "#dea883",
+              border: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+                color: "white",
+              },
+            }}
+          >
             Cancel
           </Button>
           {confirm ? (
@@ -177,7 +188,16 @@ export default function EditPostFormDialog({ post, onClose }) {
               Confirm
             </Button>
           ) : (
-            <Button variant="contained" onClick={handleFormSubmit}>
+            <Button
+              variant="contained"
+              onClick={handleFormSubmit}
+              sx={{
+                backgroundColor: "#dea883",
+                ":hover": {
+                  backgroundColor: "#1c0a52",
+                },
+              }}
+            >
               Submit
             </Button>
           )}

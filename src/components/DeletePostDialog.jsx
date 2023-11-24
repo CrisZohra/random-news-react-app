@@ -60,8 +60,32 @@ export default function DeletePostDialog({ post: postToDelete, onClose }) {
         </DialogContent>
 
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleDelete}>Delete</Button>
+          <Button
+            onClick={handleClose}
+            sx={{
+              color: "#dea883",
+              border: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+                color: "white",
+              },
+            }}
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={handleDelete}
+            sx={{
+              color: "#dea883",
+              border: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+                color: "white",
+              },
+            }}
+          >
+            Delete
+          </Button>
         </DialogActions>
       </Dialog>
     </>

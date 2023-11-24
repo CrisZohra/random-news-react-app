@@ -1,16 +1,32 @@
-import { useContext, useState } from "react";
+import {
+  DialogContentText,
+  DialogTitle,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  styled,
+} from "@mui/material";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import { DialogContentText, DialogTitle } from "@mui/material";
 import axios from "axios";
+import { useContext, useState } from "react";
 import { PostsContext } from "../context/PostsStore";
 import Plus from "/plusicon.png";
-
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
-
-export default function AddPostFormDialog({ onClose }) {
+const StyledForm = styled("form")`
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  @media (min-width: 576px) {
+    width: 500px;
+  }
+`;
+export default function AddPostFormDialog() {
   const [open, setOpen] = useState(false);
   const [newPost, setNewPost] = useState({
     title: "",
@@ -23,24 +39,30 @@ export default function AddPostFormDialog({ onClose }) {
   });
   const [confirm, setConfirm] = useState(false);
   const { posts, updatePosts } = useContext(PostsContext);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
+    setConfirm(false);
+    // Set all props to empty when the dialog is closed
+    setNewPost({
+      title: "",
+      description: "",
+      location: "",
+      date: "",
+      category: "",
+      imageURL: "",
+      URL: "",
+    });
   };
-
-  const handleConfirmEdit = () => {
+  const handleConfirmAdd = () => {
     axios
       .post(API_URL, newPost)
       .then((response) => {
-        const newPost = response.data;
-
-        const updatedPosts = [newPost, ...posts];
+        const post = response.data;
+        const updatedPosts = [post, ...posts];
         updatePosts(updatedPosts);
-
         handleClose();
       })
       .catch((error) => {
@@ -48,143 +70,117 @@ export default function AddPostFormDialog({ onClose }) {
         console.log(error);
       });
   };
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setConfirm(true);
   };
-
   return (
     <>
       <Button onClick={handleClickOpen} sx={{ height: "100%", width: "100%" }}>
         <img src={Plus} alt="plus icon" />
       </Button>
-
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add post</DialogTitle>
-
         <DialogContent>
           {!confirm ? (
-            <form>
-              <label className="form">
-                Title:
-                <input
-                  type="text"
-                  name="title"
-                  placeholder="Enter title"
-                  required={true}
-                  value={newPost.title}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
-                    // setTitle(e.target.value);
-                  }}
-                />
-              </label>
-              <br />
-              <label className="form">
-                Description:
-                <textarea
-                  type="text"
-                  name="description"
-                  placeholder="Write a description"
-                  required={true}
-                  value={newPost.description}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
-
-                    // setDescription(e.target.value);
-                  }}
-                />
-              </label>
-              <br />
-              <label className="form">
-                Location:
-                <input
-                  type="text"
-                  name="location"
-                  placeholder="Specify the location"
-                  value={newPost.location}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
-
-                    // setLocation(e.target.value);
-                  }}
-                />
-              </label>
-              <br />
-              <label className="form">
-                Date:
-                <input
-                  type="date"
-                  name="date"
-                  placeholder="Set the date"
-                  value={newPost.date}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
-
-                    // setDate(e.target.value);
-                  }}
-                />
-              </label>
-              <br />
-              <label className="form">
-                Image:
-                <input
-                  type="text"
-                  name="imageURL"
-                  placeholder="Paste image URL"
-                  value={newPost.imageURL}
-                  onChange={(e) => {
-                    setNewPost((prev) => ({
-                      ...prev,
-                      [e.target.name]: e.target.value,
-                    }));
-
-                    // setImageURL(e.target.value);
-                  }}
-                />
-              </label>
-
-              <br />
-              <label className="form">
-                Choose Category:
-                <select
+            <StyledForm>
+              <TextField
+                label="Title"
+                id="title"
+                name="title"
+                placeholder="Enter title"
+                required={true}
+                value={newPost.title}
+                onChange={(e) => {
+                  setNewPost((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <TextField
+                label="Description"
+                id="title"
+                name="description"
+                placeholder="Write a description"
+                required={true}
+                value={newPost.description}
+                onChange={(e) => {
+                  setNewPost((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <TextField
+                label="Location"
+                id="title"
+                name="location"
+                placeholder="Specify the location"
+                value={newPost.location}
+                onChange={(e) => {
+                  setNewPost((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <TextField
+                label={newPost.date ? "Date" : undefined}
+                id="date"
+                type="date"
+                name="date"
+                value={newPost.date}
+                onChange={(e) => {
+                  setNewPost((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <TextField
+                label="Image"
+                id="imageURL"
+                type="text"
+                name="imageURL"
+                placeholder="Paste image URL"
+                value={newPost.imageURL}
+                onChange={(e) => {
+                  setNewPost((prev) => ({
+                    ...prev,
+                    [e.target.name]: e.target.value,
+                  }));
+                }}
+              />
+              <FormControl fullWidth>
+                <InputLabel id="category-label">Category *</InputLabel>
+                <Select
+                  id="category"
+                  labelId="category-label"
                   name="category"
                   value={newPost.category}
+                  label="Category"
                   onChange={(e) => {
                     setNewPost((prev) => ({
                       ...prev,
                       [e.target.name]: e.target.value,
                     }));
-
-                    // setCategory(e.target.value);
                   }}
+                  required
                 >
-                  <option value="">Select category</option>
-                  <option value="weather">Weather</option>
-                  <option value="selling">Selling</option>
-                  <option value="entertainment">Entertainment</option>
-                  <option value="events">Events</option>
-                  <option value="traffic">Traffic</option>
-                  <option value="social">Social</option>
-                  <option value="jobs">Jobs</option>
-                  <option value="education">Education</option>
-                  <option value="other">Other</option>
-                </select>
-              </label>
-            </form>
+                  <MenuItem value=""></MenuItem>
+                  <MenuItem value="weather">Weather</MenuItem>
+                  <MenuItem value="selling">Selling</MenuItem>
+                  <MenuItem value="entertainment">Entertainment</MenuItem>
+                  <MenuItem value="events">Events</MenuItem>
+                  <MenuItem value="traffic">Traffic</MenuItem>
+                  <MenuItem value="social">Social</MenuItem>
+                  <MenuItem value="jobs">Jobs</MenuItem>
+                  <MenuItem value="education">Education</MenuItem>
+                  <MenuItem value="other">Other</MenuItem>
+                </Select>
+              </FormControl>
+            </StyledForm>
           ) : (
             <DialogContentText>
               Are you sure you want to add this new post?
@@ -192,12 +188,41 @@ export default function AddPostFormDialog({ onClose }) {
           )}
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-
+          <Button
+            variant="outlined"
+            onClick={handleClose}
+            sx={{
+              color: "#dea883",
+              border: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+                color: "white",
+              },
+            }}
+          >
+            Cancel
+          </Button>
           {confirm ? (
-            <Button onClick={handleConfirmEdit}>Confirm</Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={handleConfirmAdd}
+            >
+              Confirm
+            </Button>
           ) : (
-            <Button onClick={handleFormSubmit}>Submit</Button>
+            <Button
+              variant="contained"
+              onClick={handleFormSubmit}
+              sx={{
+                backgroundColor: "#dea883",
+                ":hover": {
+                  backgroundColor: "#1c0a52",
+                },
+              }}
+            >
+              Submit
+            </Button>
           )}
         </DialogActions>
       </Dialog>

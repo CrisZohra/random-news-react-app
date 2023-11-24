@@ -58,7 +58,13 @@ export default function PostCard({ post }) {
   const [toggleComments, setToggleComments] = useState(false);
 
   return (
-    <Card sx={{ maxWidth: 345, display: "flex", flexDirection: "column" }}>
+    <Card
+      sx={{
+        maxWidth: 345,
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <CardHeader
         avatar={<AccountCircleIcon sx={{ fontSize: "40px" }} />}
         action={<CardMenu post={post} />}
@@ -76,7 +82,9 @@ export default function PostCard({ post }) {
             }}
           >
             <LocationLogo src={locationLogo} alt="location icon" />
-            {post.location}
+            <TruncateEllipsisTypography>
+              {post.location}
+            </TruncateEllipsisTypography>
           </TruncateEllipsisTypography>
         }
       />
@@ -118,7 +126,7 @@ export default function PostCard({ post }) {
         {toggleComments && <Comments postID={post.id} />}
       </CardContent>
       <CardActions disableSpacing>
-        <LikesButtons/>
+        <LikesButtons />
 
         {chipStyle !== undefined ? (
           <Chip
