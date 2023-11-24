@@ -17,9 +17,11 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { PostsContext } from "../context/PostsStore";
 import Plus from "/plusicon.png";
+
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
+
 const StyledForm = styled("form")`
-  padding: 0 40px;
+  padding: 5px 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -36,7 +38,7 @@ export default function AddPostFormDialog() {
     location: "",
     date: "",
     category: "",
-    imageURL: "",
+    image: "",
     URL: "",
   });
 
@@ -59,7 +61,7 @@ export default function AddPostFormDialog() {
       location: "",
       date: "",
       category: "",
-      imageURL: "",
+      image: "",
       URL: "",
     });
   };
@@ -169,11 +171,11 @@ export default function AddPostFormDialog() {
               />
               <TextField
                 label="Image"
-                id="imageURL"
+                id="image"
                 type="text"
-                name="imageURL"
+                name="image"
                 placeholder="Paste image URL"
-                value={newPost.imageURL}
+                value={newPost.image}
                 onChange={(e) => {
                   setNewPost((prev) => ({
                     ...prev,

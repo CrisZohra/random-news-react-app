@@ -18,8 +18,9 @@ import { useContext, useState } from "react";
 import { PostsContext } from "../context/PostsStore";
 
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
+
 const StyledForm = styled("form")`
-  padding: 40px;
+  padding: 5px 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -95,7 +96,6 @@ export default function EditPostFormDialog({ post, onClose }) {
                   </ul>
                 </Alert>
               ) : null}
-
               <TextField
                 label="Title"
                 id="title"
@@ -152,11 +152,11 @@ export default function EditPostFormDialog({ post, onClose }) {
               />
               <TextField
                 label="Image"
-                id="imageURL"
+                id="image"
                 type="text"
-                name="imageURL"
+                name="image"
                 placeholder="Paste image URL"
-                value={editedPost.imageURL}
+                value={editedPost.image}
                 onChange={(e) => {
                   setEditedPost((prev) => ({
                     ...prev,
