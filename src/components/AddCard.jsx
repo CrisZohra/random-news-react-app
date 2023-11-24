@@ -5,7 +5,7 @@ import AddPostFormDialog from "./AddPostFormDialog";
 
 export default function AddCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, backgroundColor: "#ffffffe3" }}>
       <CardContent sx={{ height: "100%" }}>
         <AddPostFormDialog />
       </CardContent>

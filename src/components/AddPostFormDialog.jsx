@@ -1,4 +1,5 @@
 import {
+  Alert,
   DialogContentText,
   DialogTitle,
   FormControl,
@@ -18,7 +19,7 @@ import { PostsContext } from "../context/PostsStore";
 import Plus from "/plusicon.png";
 const API_URL = "https://random-news-react-app.adaptable.app/posts";
 const StyledForm = styled("form")`
-  padding: 40px;
+  padding: 0 40px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -26,6 +27,7 @@ const StyledForm = styled("form")`
     width: 500px;
   }
 `;
+
 export default function AddPostFormDialog() {
   const [open, setOpen] = useState(false);
   const [newPost, setNewPost] = useState({
@@ -37,14 +39,19 @@ export default function AddPostFormDialog() {
     imageURL: "",
     URL: "",
   });
+
   const [confirm, setConfirm] = useState(false);
   const { posts, updatePosts } = useContext(PostsContext);
+  const [isValid, setIsValid] = useState(true);
   const handleClickOpen = () => {
     setOpen(true);
   };
+
   const handleClose = () => {
+    // Initialise values when closing dialog, to get them initialised when it is opened again
     setOpen(false);
     setConfirm(false);
+    setIsValid(true);
     // Set all props to empty when the dialog is closed
     setNewPost({
       title: "",
@@ -56,6 +63,7 @@ export default function AddPostFormDialog() {
       URL: "",
     });
   };
+
   const handleConfirmAdd = () => {
     axios
       .post(API_URL, newPost)
@@ -70,10 +78,21 @@ export default function AddPostFormDialog() {
         console.log(error);
       });
   };
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    setConfirm(true);
+    if (
+      newPost.title === "" ||
+      newPost.description === "" ||
+      newPost.category === ""
+    ) {
+      setIsValid(false);
+    } else {
+      setIsValid(true);
+      setConfirm(true);
+    }
   };
+
   return (
     <>
       <Button onClick={handleClickOpen} sx={{ height: "100%", width: "100%" }}>
@@ -84,6 +103,16 @@ export default function AddPostFormDialog() {
         <DialogContent>
           {!confirm ? (
             <StyledForm>
+              {!isValid ? (
+                <Alert severity="error">
+                  The following fields are required:
+                  <ul>
+                    <li>Title</li>
+                    <li>Description</li>
+                    <li>Category</li>
+                  </ul>
+                </Alert>
+              ) : null}
               <TextField
                 label="Title"
                 id="title"

@@ -4,6 +4,7 @@ import Loader from "../components/Loader";
 import PostCard from "../components/PostCard";
 import AddCard from "../components/AddCard";
 import { useParams } from "react-router-dom";
+import { Typography } from "@mui/material";
 
 function capitalize(str) {
   if (typeof str !== "string") {
@@ -41,7 +42,12 @@ function CategoryPostsPage() {
 
   return (
     <>
-      <h1>{capitalize(category)} Posts</h1>
+      <Typography
+        variant="h1"
+        sx={{ marginTop: "25px", fontSize: "40px", fontWeight: "400" }}
+      >
+        {`${capitalize(category)} Posts`}
+      </Typography>
       <div className="center">
         {isLoading ? (
           <Loader />
