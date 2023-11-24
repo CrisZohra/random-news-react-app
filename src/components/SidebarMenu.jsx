@@ -198,7 +198,7 @@ export default function SidebarMenu() {
             <ListItem disablePadding>
               <ListItemButton
                 onClick={() => {
-                  navigate("/about-us");
+                  navigate("/about");
                   setIsOpen(false);
                 }}
               >

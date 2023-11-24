@@ -2,6 +2,8 @@ import axios from "axios";
 import { Avatar, Grid, Paper } from "@mui/material";
 import { useEffect, useState } from "react";
 import avatar from "/default-avatar.webp";
+import Button from "@mui/material/Button";
+
 
 function AddComment(props) {
   const API_URL = `https://random-news-react-app.adaptable.app/posts/${props.postID}?_embed=comments`;
@@ -54,7 +56,7 @@ function AddComment(props) {
     <>
       <div>
         <form onSubmit={handleSubmit}>
-          <input
+          <input className="comment-input"
             type="text"
             name="commentMessage"
             placeholder="Write your thoughts"
@@ -63,7 +65,15 @@ function AddComment(props) {
               setCommentMessage(e.target.value);
             }}
           />
-          <button type="submit">Submit</button>
+          <Button  sx={{
+              color: "#dea883",
+              border: "#dea883",
+              ":hover": {
+                backgroundColor: "#1c0a52",
+                color: "white",
+              },
+            }}
+            type="submit">Submit</Button>
         </form>
       </div>
       {array.map((elm) => {
