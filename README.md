@@ -27,7 +27,7 @@ Use our site to stay up to date with the newest events, weather and traffic upda
 
 ## DEMO
 
-https://what-now-portal.netlify.app/
+[What now? App](https://what-now-news.netlify.app/)
 
 ## MVP
 
