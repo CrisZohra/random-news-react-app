@@ -112,7 +112,7 @@ export default function EditPostFormDialog({ post, onClose }) {
               />
               <TextField
                 label="Description"
-                id="title"
+                id="description"
                 name="description"
                 placeholder="Write a description"
                 required={true}
@@ -126,7 +126,7 @@ export default function EditPostFormDialog({ post, onClose }) {
               />
               <TextField
                 label="Location"
-                id="title"
+                id="location"
                 name="location"
                 placeholder="Specify the location"
                 value={editedPost.location}

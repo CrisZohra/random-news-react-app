@@ -131,7 +131,7 @@ export default function AddPostFormDialog() {
               />
               <TextField
                 label="Description"
-                id="title"
+                id="description"
                 name="description"
                 placeholder="Write a description"
                 required={true}
@@ -145,7 +145,7 @@ export default function AddPostFormDialog() {
               />
               <TextField
                 label="Location"
-                id="title"
+                id="location"
                 name="location"
                 placeholder="Specify the location"
                 value={newPost.location}

@@ -53,7 +53,7 @@ export default function SidebarMenu() {
       >
         <Paper
           sx={{
-            height: "100%",
+            flex: "1",
             backgroundColor: "#dea883",
             display: "flex",
             flexDirection: "column",
